@@ -1,0 +1,23 @@
+.appDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.version {
+  font-size: var(--font-sm);
+}
+
+.linksContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  & > a {
+    font-size: var(--font-sm);
+  }
+
+  & > a:hover {
+    text-decoration: underline;
+  }
+}

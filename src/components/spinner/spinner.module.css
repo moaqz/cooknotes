@@ -1,0 +1,12 @@
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.spinner {
+  animation-duration: 1s;
+  animation-name: spin;
+  animation-iteration-count: infinite;
+  color: var(--yellow-400);
+}

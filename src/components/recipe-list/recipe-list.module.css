@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.5rem;
+  max-height: 95dvh;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: var(--font-sm);
+  letter-spacing: -0.025rem;
+}
+
+.recipeList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.recipeItem {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: var(--font-sm);
+  color: var(--secondary-text);
+  transition-property: background-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &:hover {
+    color: var(--primary-text);
+    background-color: var(--base-850);
+  }
+}
+
+.notFoundMessage {
+  padding: 0.25rem;
+  text-wrap: pretty;
+  font-size: var(--font-sm);
+
+  & span {
+    font-weight: 600;
+    color: var(--yellow-400);
+  }
+}
