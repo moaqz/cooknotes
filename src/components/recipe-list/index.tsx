@@ -38,7 +38,7 @@ export function RecipeList() {
   }, []);
 
   const filteredRecipes = registery.filter((recipe) => {
-    return recipe.name.toLocaleLowerCase().includes(query);
+    return recipe.name.toLocaleLowerCase().includes(query.toLocaleLowerCase());
   });
 
   const hasRecipes = filteredRecipes.length > 0;
