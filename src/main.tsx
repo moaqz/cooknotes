@@ -1,13 +1,15 @@
 import { render } from "preact";
-import { LocationProvider, Router, Route } from "preact-iso";
+import { LocationProvider, Router, Route, lazy } from "preact-iso";
 
 import "./styles/reset.css";
 import "./styles/index.css";
 
-import { NewRecipeView } from "./views/new-recipe";
 import { RecipeList } from "./components/recipe-list";
 import { AppDetails } from "./components/app-details";
 import { TitleBar } from "./components/title-bar";
+
+const RecipeView = lazy(() => import("~/views/new-recipe").then((m) => m.NewRecipeView));
+const NotFoundView = lazy(() => import("~/views/not-found").then((m) => m.NotFoundView));
 
 function App() {
   return (
@@ -22,8 +24,8 @@ function App() {
           <TitleBar />
           <main>
             <Router>
-              {/* @ts-ignore */}
-              <Route path="/new" component={NewRecipeView} />
+              <Route path="/new" component={RecipeView} />
+              <Route component={NotFoundView} default />
             </Router>
           </main>
         </div>
