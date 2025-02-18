@@ -62,7 +62,7 @@ export function RecipeList() {
               ? (
                   filteredRecipes.map((item) => (
                     <li key={item.id}>
-                      <a href={`/recipes/${item.id}`} class={styles.recipeItem}>
+                      <a href={`/recipes/${item.name.toLowerCase()}-${item.id}`} class={styles.recipeItem}>
                         <svg width="14" height="14" viewBox="0 0 24 24">
                           <use href="/ui.svg#hash" />
                         </svg>

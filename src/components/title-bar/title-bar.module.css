@@ -1,0 +1,42 @@
+.titleBar {
+  --icon-separation: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.navigation,
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--icon-separation);
+}
+
+.iconBtn {
+  height: 2.5rem;
+  padding-inline: 0.5rem;
+  color: var(--secondary-text);
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  
+  transition-property: color, background-color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+
+  &:hover:enabled {
+    color: var(--primary-text);
+    background-color: var(--base-900);
+  }
+
+  &:disabled {
+    opacity: .50;
+  }
+}
+
+.tabTitle {
+  font-size: var(--font-sm);
+  color: var(--secondary-text);
+  font-weight: bold;
+}

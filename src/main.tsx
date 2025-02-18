@@ -7,6 +7,7 @@ import "./styles/index.css";
 import { NewRecipeView } from "./views/new-recipe";
 import { RecipeList } from "./components/recipe-list";
 import { AppDetails } from "./components/app-details";
+import { TitleBar } from "./components/title-bar";
 
 function App() {
   return (
@@ -17,12 +18,15 @@ function App() {
           <AppDetails />
         </aside>
 
-        <main>
-          <Router>
-            {/* @ts-ignore */}
-            <Route path="/new" component={NewRecipeView} />
-          </Router>
-        </main>
+        <div>
+          <TitleBar />
+          <main>
+            <Router>
+              {/* @ts-ignore */}
+              <Route path="/new" component={NewRecipeView} />
+            </Router>
+          </main>
+        </div>
       </div>
     </LocationProvider>
   );
