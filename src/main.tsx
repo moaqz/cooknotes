@@ -15,7 +15,6 @@ const NotFoundView = lazy(() => import("~/views/not-found").then((m) => m.NotFou
 function App() {
   return (
     <LocationProvider>
-      {/* <div class="page-layout"> */}
       <section class="menubar">
         <RecipeList />
         <AppDetails />
@@ -31,7 +30,6 @@ function App() {
           </Router>
         </main>
       </div>
-      {/* </div> */}
     </LocationProvider>
   );
 }
