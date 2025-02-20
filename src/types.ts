@@ -10,3 +10,29 @@ export type RegisteryItem = {
 };
 
 export type Registery = RegisteryItem[];
+
+export type RecipeStep = {
+  /**
+   * Description of the step in the recipe.
+   */
+  description: string;
+  /**
+   * Array of image URLs related to this step.
+   */
+  images: string[];
+};
+
+export type Recipe = {
+  name: string;
+  main_image: string;
+  /**
+   * Estimated cooking time in minutes.
+   */
+  cooking_time: number;
+  /**
+   * ISO 8601 timestamp of when the recipe was created.
+   */
+  created_at: string;
+  ingredients: string[];
+  steps: RecipeStep[];
+};

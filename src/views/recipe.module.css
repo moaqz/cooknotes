@@ -1,0 +1,93 @@
+.container {
+  max-width: var(--max-content-width);
+  padding: 1rem;
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(30%, 300px) 1fr;
+  gap: 1.5rem;
+}
+
+.contentGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.leftSection,
+.rightSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.rightSection {
+  gap: 3rem;
+}
+
+.recipeImage {
+  aspect-ratio: 1/1;
+  border: 1px solid var(--base-900);
+  border-radius: 0.75rem;
+}
+
+.ingredient {
+  padding: 0.25rem;
+  border-bottom: 1px dashed var(--base-850);
+}
+
+.ingredient:last-child {
+  border-bottom: none;
+}
+
+.stepsList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: stepsCounter;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.step {
+  --number-size: 1.5rem;
+  counter-increment: stepsCounter 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-wrap: pretty;
+
+  &:before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--number-size);
+    width: var(--number-size);
+    background-color: var(--cyan-600);
+    font-weight: bold;
+    border-radius: 50vh;
+    content: counter(stepsCounter);
+  }
+}
+
+.actions {
+  max-width: var(--max-content-width);
+  margin-inline: auto;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  border-top: 1px solid var(--base-900);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recipeMeta {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--secondary-text);
+}

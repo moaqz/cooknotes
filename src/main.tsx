@@ -8,7 +8,8 @@ import { RecipeList } from "./components/recipe-list";
 import { AppDetails } from "./components/app-details";
 import { TitleBar } from "./components/title-bar";
 
-const RecipeView = lazy(() => import("~/views/new-recipe").then((m) => m.NewRecipeView));
+const NewRecipeView = lazy(() => import("~/views/new-recipe").then((m) => m.NewRecipeView));
+const RecipeView = lazy(() => import("~/views/recipe").then((m) => m.RecipeView));
 const NotFoundView = lazy(() => import("~/views/not-found").then((m) => m.NotFoundView));
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
           <TitleBar />
           <main>
             <Router>
-              <Route path="/new" component={RecipeView} />
+              <Route path="/new" component={NewRecipeView} />
+              <Route path="/recipes/:id" component={RecipeView} />
               <Route component={NotFoundView} default />
             </Router>
           </main>

@@ -41,6 +41,8 @@
   --secondary-text: var(--base-500);
 
   --font-sm: 0.857rem;
+
+  --max-content-width: 80rem;
 }
 
 body {
@@ -80,4 +82,34 @@ input[type="search"] {
   border-radius: 0.25rem;
   background: var(--base-850);
   color: var(--secondary-text);
+}
+
+.btn {
+  height: 2.5rem;
+  padding-inline: 1.25rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition-duration: 200ms;
+  transition-property: background-color, color;
+
+  background-color: var(--base-850);
+  color: var(--paper);
+
+  &:hover {
+    background-color: var(--base-800);
+  }
+
+  &.btn-danger {
+    color: var(--paper);
+    background-color: var(--red-600);
+  }
+
+  &.btn-danger:hover {
+    background-color: var(--red-400);
+  }
 }
