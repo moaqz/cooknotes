@@ -4,7 +4,8 @@ export default [
   ...moaqz,
   {
     rules: {
-      "@stylistic/jsx-quotes": ["error", "prefer-double"]
+      "@stylistic/jsx-quotes": ["error", "prefer-double"],
+      "@stylistic/jsx-closing-tag-location": "off"
     }
   }
 ];
