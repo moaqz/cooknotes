@@ -15,23 +15,23 @@ const NotFoundView = lazy(() => import("~/views/not-found").then((m) => m.NotFou
 function App() {
   return (
     <LocationProvider>
-      <div class="wrapper">
-        <aside class="sidebarContent">
-          <RecipeList />
-          <AppDetails />
-        </aside>
+      {/* <div class="page-layout"> */}
+      <section class="menubar">
+        <RecipeList />
+        <AppDetails />
+      </section>
 
-        <div>
-          <TitleBar />
-          <main>
-            <Router>
-              <Route path="/new" component={NewRecipeView} />
-              <Route path="/recipes/:id" component={RecipeView} />
-              <Route component={NotFoundView} default />
-            </Router>
-          </main>
-        </div>
+      <div class="page">
+        <TitleBar />
+        <main>
+          <Router>
+            <Route path="/new" component={NewRecipeView} />
+            <Route path="/recipes/:id" component={RecipeView} />
+            <Route component={NotFoundView} default />
+          </Router>
+        </main>
       </div>
+      {/* </div> */}
     </LocationProvider>
   );
 }

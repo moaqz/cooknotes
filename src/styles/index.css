@@ -43,6 +43,7 @@
   --font-sm: 0.857rem;
 
   --max-content-width: 80rem;
+  --menubar-size: 18rem;
 }
 
 body {
@@ -52,27 +53,28 @@ body {
   color: var(--primary-text);
 }
 
-.wrapper {
-  --min-sidebar-w: 16rem;
-  --max-sizebar-w: 18rem;
-
-  width: 100%;
-  height: 100dvh;
-  display: grid;
-  grid-template-columns: minmax(var(--min-sidebar-w), var(--max-sizebar-w)) 1fr;
-  grid-column-gap: 1.5rem;
-}
-
-.sidebarContent {
+.menubar {
   background-color: var(--sidebar-bg);
   border-right: 1px solid var(--base-900);
   padding: 1.5rem 0.75rem;
+  height: 100%;
+  width: var(--menubar-size);
 
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
 }
 
+.page {
+  --gap: 1.5rem;
+  width: calc(100% - var(--menubar-size) - var(--gap));
+  transform: translate(calc(var(--menubar-size) + var(--gap)));
+}
 
 input[type="search"] {
   width: 100%;
