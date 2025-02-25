@@ -74,6 +74,7 @@ body {
   --gap: 1.5rem;
   width: calc(100% - var(--menubar-size) - var(--gap));
   transform: translate(calc(var(--menubar-size) + var(--gap)));
+  padding-bottom: 3rem;
 }
 
 input[type="search"] {
