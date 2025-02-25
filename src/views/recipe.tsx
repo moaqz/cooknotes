@@ -51,13 +51,19 @@ export function RecipeView() {
           <div class={styles.contentGroup}>
             <h2>Ingredientes</h2>
 
-            <ul>
-              {recipeData.ingredients.map((item, idx) => (
-                <li key={idx} class={styles.ingredient}>
-                  {item}
-                </li>
-              ))}
-            </ul>
+            {recipeData.ingredients.map((section, idx) => (
+              <div key={section.section_name || idx} class={styles.ingredientsGroup}>
+                {section.section_name ? <h3>{section.section_name}</h3> : null}
+
+                <ul>
+                  {section.ingredients.map((item, idx) => (
+                    <li key={idx} class={styles.ingredient}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 

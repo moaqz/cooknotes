@@ -22,6 +22,11 @@ export type RecipeStep = {
   images: string[];
 };
 
+export type IngredientSection = {
+  section_name?: string;
+  ingredients: string[];
+};
+
 export type Recipe = {
   name: string;
   main_image: string;
@@ -33,6 +38,6 @@ export type Recipe = {
    * ISO 8601 timestamp of when the recipe was created.
    */
   created_at: string;
-  ingredients: string[];
+  ingredients: IngredientSection[];
   steps: RecipeStep[];
 };
