@@ -1,0 +1,21 @@
+.recipeForm {
+  max-width: var(--max-content-width);
+  padding: 1rem;
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(30%, 300px) 1fr;
+  gap: 1.5rem;
+}
+
+.leftSection,
+.rightSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contentGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}

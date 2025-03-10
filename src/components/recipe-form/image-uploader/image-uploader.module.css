@@ -1,0 +1,43 @@
+.imageUploader {
+  width: 100%;
+  min-height: 12.5rem;
+  aspect-ratio: 1/1;
+  border: 1px solid var(--base-900);
+  border-radius: 0.75rem;
+  background-color: var(--base-950);
+  display: grid;
+  place-content: center;
+}
+
+.fileInput {
+  display: none;
+}
+
+.imagePreview {
+  position: relative;
+
+  &>img {
+    width: 100%;
+    min-height: 12.5rem;
+    aspect-ratio: 1/1;
+    border: 1px solid var(--base-900);
+    border-radius: 0.75rem;
+    object-fit: cover;
+  }
+
+  &>button {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    display: grid;
+    place-content: center;
+    height: 2.5rem;
+    padding: 0.75rem;
+    background-color: var(--base-900);
+    color: var(--paper);
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+  }
+}

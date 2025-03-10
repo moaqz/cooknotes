@@ -87,6 +87,34 @@ input[type="search"] {
   color: var(--secondary-text);
 }
 
+/* Remove arrows from input type number */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.textField {
+  width: 100%;
+  height: 2.5rem;
+  padding-inline: 1rem;
+  border: 1px solid var(--base-850);
+  border-radius: 0.25rem;
+  background: var(--base-900);
+  color: var(--secondary-text);
+}
+
+.textArea {
+  width: 100%;
+  border: 1px solid var(--base-850);
+  background-color: var(--base-900);
+  border-radius: 0.25rem;
+  color: var(--secondary-text);
+  padding: 0.5rem 1rem;
+  resize: none;
+  min-height: 2rem !important;
+}
+
 .btn {
   height: 2.5rem;
   padding-inline: 1.25rem;
@@ -103,8 +131,12 @@ input[type="search"] {
   background-color: var(--base-850);
   color: var(--paper);
 
-  &:hover {
+  &:enabled:hover {
     background-color: var(--base-800);
+  }
+
+  &:disabled {
+    opacity: 0.6;
   }
 
   &.btn-danger {

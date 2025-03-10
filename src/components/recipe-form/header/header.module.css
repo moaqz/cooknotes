@@ -1,0 +1,18 @@
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.fieldGroup label {
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--secondary-text);
+}
+
+.charHint {
+  font-size: var(--font-sm);
+  color: var(--secondary-text);
+  font-weight: bold;
+  align-self: end;
+}

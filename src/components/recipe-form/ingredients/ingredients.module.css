@@ -1,0 +1,49 @@
+.ingredientForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ingredientSection {
+  padding-block: 0.75rem;
+  border-bottom: 1px dashed var(--base-850);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ingredientsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ingredient {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action {
+  border: none;
+  background-color: transparent;
+  color: var(--secondary-text);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition-duration: 200ms;
+  transition-property: background-color, color;
+
+  &:enabled:hover {
+    color: var(--primary-text);
+    background-color: var(--base-900);
+  }
+}

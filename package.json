@@ -12,6 +12,8 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@modular-forms/preact": "^0.12.1",
+    "@preact/signals": "^2.0.1",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-fs": "^2.2.0",
     "@tauri-apps/plugin-opener": "^2",

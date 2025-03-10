@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@modular-forms/preact':
+        specifier: ^0.12.1
+        version: 0.12.1(@preact/signals@2.0.1(preact@10.25.4))(preact@10.25.4)(typescript@5.6.3)
+      '@preact/signals':
+        specifier: ^2.0.1
+        version: 2.0.1(preact@10.25.4)
       '@tauri-apps/api':
         specifier: ^2
         version: 2.2.0
@@ -378,6 +384,12 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
+  '@modular-forms/preact@0.12.1':
+    resolution: {integrity: sha512-e+3T0y890sAZ6vXJBSenthpLPddk9dXarooSL0WaffF/1nCvT48v5ugtrHqMwalY62djzV9kXXI6gWpKw5Un0w==}
+    peerDependencies:
+      '@preact/signals': ^1.0.0
+      preact: ^10.0.0
+
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -399,6 +411,14 @@ packages:
     peerDependencies:
       '@babel/core': 7.x
       vite: 2.x || 3.x || 4.x || 5.x || 6.x
+
+  '@preact/signals-core@1.8.0':
+    resolution: {integrity: sha512-OBvUsRZqNmjzCZXWLxkZfhcgT+Fk8DDcT/8vD6a1xhDemodyy87UJRJfASMuSD8FaAIeGgGm85ydXhm7lr4fyA==}
+
+  '@preact/signals@2.0.1':
+    resolution: {integrity: sha512-f9p/utMgttPb9bJ+UgRBkTDZ9uQiZfX1/gV3pXGWz+yGNQj8MrnG55Xo8MAG4IHcb5UXQO6tvt9ZlsM4A2j+Rw==}
+    peerDependencies:
+      preact: 10.x
 
   '@prefresh/babel-plugin@0.5.1':
     resolution: {integrity: sha512-uG3jGEAysxWoyG3XkYfjYHgaySFrSsaEb4GagLzYaxlydbuREtaX+FTxuIidp241RaLl85XoHg9Ej6E4+V1pcg==}
@@ -1829,6 +1849,14 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
+  valibot@1.0.0-rc.3:
+    resolution: {integrity: sha512-LT0REa7Iqx4QGcaHLiTiTkcmJqJ9QdpOy89HALFFBJgejTS64GQFRIbDF7e4f6pauQbo/myfKGmWXCLhMeM6+g==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
@@ -2202,6 +2230,14 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@modular-forms/preact@0.12.1(@preact/signals@2.0.1(preact@10.25.4))(preact@10.25.4)(typescript@5.6.3)':
+    dependencies:
+      '@preact/signals': 2.0.1(preact@10.25.4)
+      preact: 10.25.4
+      valibot: 1.0.0-rc.3(typescript@5.6.3)
+    transitivePeerDependencies:
+      - typescript
+
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -2231,6 +2267,13 @@ snapshots:
     transitivePeerDependencies:
       - preact
       - supports-color
+
+  '@preact/signals-core@1.8.0': {}
+
+  '@preact/signals@2.0.1(preact@10.25.4)':
+    dependencies:
+      '@preact/signals-core': 1.8.0
+      preact: 10.25.4
 
   '@prefresh/babel-plugin@0.5.1': {}
 
@@ -3927,6 +3970,10 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  valibot@1.0.0-rc.3(typescript@5.6.3):
+    optionalDependencies:
+      typescript: 5.6.3
 
   validate-npm-package-license@3.0.4:
     dependencies:

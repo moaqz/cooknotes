@@ -42,3 +42,11 @@ export type Recipe = {
   ingredients: IngredientSection[];
   steps: RecipeStep[];
 };
+
+export type RecipeFormData = {
+  steps: RecipeStep[];
+  ingredients: IngredientSection[];
+  name: string;
+  main_image: string;
+  cooking_time: number;
+};
