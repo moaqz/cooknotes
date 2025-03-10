@@ -5,7 +5,7 @@ export const REGISTERY_FILE = "registery.json";
 
 export const DEFAULT_RECIPE_FORM_VALUES = {
   steps: [
-    { id: crypto.randomUUID(), description: "", images: [] },
+    { description: "", images: [] },
   ],
   ingredients: [],
   name: "",
