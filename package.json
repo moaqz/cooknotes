@@ -12,6 +12,7 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@moaqzdev/toast": "^0.2.0",
     "@modular-forms/preact": "^0.12.1",
     "@preact/signals": "^2.0.1",
     "@tauri-apps/api": "^2",

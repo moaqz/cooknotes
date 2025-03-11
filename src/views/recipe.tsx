@@ -1,42 +1,60 @@
-import { useLocation, useRoute } from "preact-iso";
-import { useEffect, useState } from "preact/hooks";
-import { Recipe } from "~/types";
-
+import { toast } from "@moaqzdev/toast";
 import styles from "./recipe.module.css";
-import { getLocalImage } from "~/lib/image";
-import { readJSONFile } from "~/lib/fs";
+import { useLocation, useRoute } from "preact-iso";
+import { useEffect } from "preact/hooks";
+import { useRecipe } from "~/hooks/useRecipe";
+import { deleteFile, getRecipePath } from "~/lib/fs";
+import { emit } from "@tauri-apps/api/event";
+import { RECIPES_UPDATED_EVENT } from "~/constants";
 
 export function RecipeView() {
-  const { route } = useLocation();
+  const { recipeData, isFetching } = useRecipe({ normalizeImage: true });
   const { id } = useRoute().params;
-  const [recipeData, setRecipeData] = useState<Recipe | null>(null);
+  const location = useLocation();
 
   useEffect(() => {
-    const fetchRecipe = async () => {
-      try {
-        const path = `recipes/${id}.json`;
-        const recipe = await readJSONFile<Recipe>(path);
-        setRecipeData({
-          ...recipe,
-          "main_image": recipe.main_image
-            ? await getLocalImage(recipe.main_image)
-            : "/illustrations/food-placeholder.webp"
-        });
-      } catch (e) {
-        route("/not-found");
-      }
-    };
+    if (!isFetching && !recipeData) {
+      location.route("/not-found");
+    }
+  }, [isFetching]);
 
-    fetchRecipe();
-  }, [id]);
-
-  if (!recipeData) {
-    return;
+  if (isFetching || !recipeData) {
+    return null;
   }
 
   const formattedDate = new Intl.DateTimeFormat("es", {
     dateStyle: "full",
   }).format(new Date(recipeData.created_at));
+
+  const deleteRecipe = () => {
+    toast.confirm({
+      title: "Eliminar receta",
+      description:
+        "¿Estás seguro de que quieres eliminar esta receta? Esta acción no se puede deshacer.",
+      confirmText: "Eliminar",
+      cancelText: "Cancelar",
+      onConfirm: async () => {
+        try {
+          const filePath = getRecipePath(recipeData.name);
+          await deleteFile(filePath);
+          toast.success({
+            title: "Receta eliminada",
+            description: "La receta ha sido eliminada correctamente.",
+            duration: 8000,
+          });
+          await emit(RECIPES_UPDATED_EVENT);
+          location.route("/");
+        } catch (e) {
+          toast.error({
+            title: "Error al eliminar",
+            description: "Hubo un problema al eliminar la receta.",
+            duration: 8000,
+          });
+        }
+      },
+      duration: "none",
+    });
+  };
 
   return (
     <>
@@ -57,7 +75,7 @@ export function RecipeView() {
                 {section.section_name ? <h3>{section.section_name}</h3> : null}
 
                 <ul>
-                  {section.ingredients.map((item, idx) => (
+                  {section.ingredients?.map((item, idx) => (
                     <li key={idx} class={styles.ingredient}>
                       {item}
                     </li>
@@ -90,7 +108,7 @@ export function RecipeView() {
             <h2>Paso a Paso</h2>
 
             <ol class={styles.stepsList}>
-              {recipeData.steps.map((item, idx) => (
+              {recipeData.steps?.map((item, idx) => (
                 <li key={idx} class={styles.step}>
                   {item.description}
                 </li>
@@ -101,7 +119,7 @@ export function RecipeView() {
       </section>
 
       <footer class={styles.actions}>
-        <a href={`/edit/${id}`} class="btn">
+        <a href={`/recipes/${id}/edit`} class="btn">
           <svg width="20" height="20" aria-hidden="true">
             <use href="/recipe.svg#pencil" />
           </svg>
@@ -115,7 +133,10 @@ export function RecipeView() {
           Imprimir
         </button>
 
-        <button class="btn btn-danger">
+        <button
+          class="btn btn-danger"
+          onClick={deleteRecipe}
+        >
           <svg width="20" height="20" aria-hidden="true">
             <use href="/recipe.svg#trash" />
           </svg>

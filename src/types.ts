@@ -1,3 +1,13 @@
+declare global {
+  namespace preact.JSX {
+    interface IntrinsicElements {
+      "moaqz-toaster": {
+        dismissable: boolean
+      };
+    }
+  }
+}
+
 export type RecipeEntry = {
   /**
    * Unique identifier of the recipe, derived from the filename in kebab case.
@@ -42,8 +52,8 @@ export type Recipe = {
    * ISO 8601 timestamp of when the recipe was created.
    */
   created_at: string;
-  ingredients: IngredientSection[];
-  steps: RecipeStep[];
+  ingredients?: IngredientSection[];
+  steps?: RecipeStep[];
 };
 
 export type RecipeFormData = {

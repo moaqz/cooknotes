@@ -1,5 +1,6 @@
 import { render } from "preact";
 import { LocationProvider, Router, Route, lazy } from "preact-iso";
+import "@moaqzdev/toast";
 
 import "./styles/reset.css";
 import "./styles/index.css";
@@ -11,6 +12,7 @@ import { TitleBar } from "./components/title-bar";
 const NewRecipeView = lazy(() => import("~/views/new-recipe").then((m) => m.NewRecipeView));
 const RecipeView = lazy(() => import("~/views/recipe").then((m) => m.RecipeView));
 const NotFoundView = lazy(() => import("~/views/not-found").then((m) => m.NotFoundView));
+const EditRecipeView = lazy(() => import("~/views/edit-recipe").then(m => m.EditRecipeView));
 
 function App() {
   return (
@@ -26,10 +28,12 @@ function App() {
           <Router>
             <Route path="/new" component={NewRecipeView} />
             <Route path="/recipes/:id" component={RecipeView} />
+            <Route path="/recipes/:id/edit" component={EditRecipeView} />
             <Route component={NotFoundView} default />
           </Router>
         </main>
       </div>
+      <moaqz-toaster dismissable />
     </LocationProvider>
   );
 }

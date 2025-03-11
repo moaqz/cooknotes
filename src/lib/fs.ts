@@ -1,5 +1,5 @@
-import { BaseDirectory, readTextFile, readDir } from "@tauri-apps/plugin-fs";
-import { toSentenceCase } from "./strings";
+import { BaseDirectory, readTextFile, writeTextFile, readDir, rename, remove } from "@tauri-apps/plugin-fs";
+import { toKebabCase, toSentenceCase } from "./strings";
 import { RecipeEntries } from "~/types";
 
 export async function readJSONFile<T>(path:string) {
@@ -8,6 +8,13 @@ export async function readJSONFile<T>(path:string) {
   });
 
   return JSON.parse(data) as T;
+}
+
+export async function writeJSONFile<T>(path: string, data: T) {
+  const _data = typeof data === "string" ? data : JSON.stringify(data);
+  return await writeTextFile(path, _data, {
+    baseDir: BaseDirectory.AppLocalData,
+  });
 }
 
 export async function listRecipes(path: string = "") {
@@ -32,4 +39,21 @@ export async function listRecipes(path: string = "") {
   }
 
   return recipeEntries;
+}
+
+export function deleteFile(path: string) {
+  return remove(path, {
+    baseDir: BaseDirectory.AppLocalData
+  });
+}
+
+export function renameFile(oldPath: string, newPath: string) {
+  return rename(oldPath, newPath, {
+    newPathBaseDir: BaseDirectory.AppLocalData,
+    oldPathBaseDir: BaseDirectory.AppLocalData
+  });
+}
+
+export function getRecipePath(name: string): string {
+  return `recipes/${toKebabCase(name)}.json`;
 }

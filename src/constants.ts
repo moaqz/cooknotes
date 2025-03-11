@@ -12,3 +12,5 @@ export const DEFAULT_RECIPE_FORM_VALUES = {
   main_image: "",
   cooking_time: 0,
 };
+
+export const RECIPES_UPDATED_EVENT = "recipes-updated";

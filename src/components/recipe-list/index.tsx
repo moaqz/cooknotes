@@ -4,21 +4,39 @@ import { useEffect, useState } from "preact/hooks";
 import { Spinner } from "~/components/spinner";
 import { RecipeEntries } from "~/types";
 import { listRecipes } from "~/lib/fs";
+import { listen, UnlistenFn } from "@tauri-apps/api/event";
+import { RECIPES_UPDATED_EVENT } from "~/constants";
 
 export function RecipeList() {
   const [recipes, setRecipes] = useState<RecipeEntries>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isRefetching, setIsRefetching] = useState(false);
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    const fetchRegistery = async () => {
-      setIsLoading(true);
-      const data = await listRecipes("recipes").catch(() => []);
-      setRecipes(data);
-      setIsLoading(false);
-    };
+  const fetchRecipes = async () => {
+    setIsLoading(true);
+    setIsRefetching(true);
+    const data = await listRecipes("recipes").catch(() => []);
+    setRecipes(data);
+    setIsLoading(false);
+    setIsRefetching(false);
+  };
 
-    fetchRegistery();
+  useEffect(() => {
+    fetchRecipes();
+  }, []);
+
+  useEffect(() => {
+    let unlisten: UnlistenFn | undefined;
+
+    listen(RECIPES_UPDATED_EVENT, () => fetchRecipes())
+      .then((fn) => { unlisten = fn; });
+
+    return () => {
+      if (unlisten) {
+        unlisten();
+      }
+    };
   }, []);
 
   const filteredRecipes = recipes.filter((recipe) => {
@@ -38,7 +56,7 @@ export function RecipeList() {
         onInput={(e) => setQuery(e.currentTarget.value)}
       />
 
-      {isLoading
+      {isLoading || isRefetching
         ? <Spinner />
         : (
           <ul class={styles.recipeList}>
