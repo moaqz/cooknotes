@@ -29,6 +29,17 @@
       "allow": [
         {
           "path": "$APPLOCALDATA/images/**"
+        },
+        {
+          "path": "$APPLOCALDATA/*"
+        }
+      ]
+    },
+    {
+      "identifier": "fs:read-dirs",
+      "allow": [
+        {
+          "path": "$APPLOCALDATA/*"
         }
       ]
     }

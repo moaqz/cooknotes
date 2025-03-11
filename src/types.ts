@@ -1,15 +1,19 @@
-export type RegisteryItem = {
+export type RecipeEntry = {
   /**
-   * Unique identifier of the recipe.
+   * Unique identifier of the recipe, derived from the filename in kebab case.
+   *
+   * @example "chocolate-cake.json" -> "chocolate-cake"
    */
   id: string;
   /**
    * Name of the recipe, used for listing it.
+   *
+   * @example "chocolate-cake.json" -> "Chocolate cake"
    */
   name: string;
 };
 
-export type Registery = RegisteryItem[];
+export type RecipeEntries = RecipeEntry[];
 
 export type RecipeStep = {
   /**

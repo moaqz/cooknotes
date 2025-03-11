@@ -14,7 +14,8 @@ export function RecipeView() {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const recipe = await readJSONFile(`${id}.json`);
+        const path = `recipes/${id}.json`;
+        const recipe = await readJSONFile<Recipe>(path);
         setRecipeData({
           ...recipe,
           "main_image": recipe.main_image
@@ -51,7 +52,7 @@ export function RecipeView() {
           <div class={styles.contentGroup}>
             <h2>Ingredientes</h2>
 
-            {recipeData.ingredients.map((section, idx) => (
+            {recipeData.ingredients?.map((section, idx) => (
               <div key={section.section_name || idx} class={styles.ingredientsGroup}>
                 {section.section_name ? <h3>{section.section_name}</h3> : null}
 

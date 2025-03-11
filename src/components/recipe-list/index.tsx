@@ -1,43 +1,27 @@
-/* eslint-disable @stylistic/jsx-closing-tag-location */
-import { useEffect, useState } from "preact/hooks";
-import { BaseDirectory } from "@tauri-apps/api/path";
-import { exists, readTextFile } from "@tauri-apps/plugin-fs";
 import styles from "./recipe-list.module.css";
+
+import { useEffect, useState } from "preact/hooks";
 import { Spinner } from "~/components/spinner";
-import { Registery } from "~/types";
-import { REGISTERY_FILE } from "~/constants";
+import { RecipeEntries } from "~/types";
+import { listRecipes } from "~/lib/fs";
 
 export function RecipeList() {
-  const [registery, setRegistery] = useState<Registery>([]);
+  const [recipes, setRecipes] = useState<RecipeEntries>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
     const fetchRegistery = async () => {
       setIsLoading(true);
-
-      const hasRegistery = await exists(REGISTERY_FILE, {
-        baseDir: BaseDirectory.AppLocalData,
-      });
-
-      if (!hasRegistery) {
-        setRegistery([]);
-        setIsLoading(false);
-        return;
-      }
-
-      const data = await readTextFile(REGISTERY_FILE, {
-        baseDir: BaseDirectory.AppLocalData,
-      });
-
-      setRegistery(JSON.parse(data));
+      const data = await listRecipes("recipes").catch(() => []);
+      setRecipes(data);
       setIsLoading(false);
     };
 
     fetchRegistery();
   }, []);
 
-  const filteredRecipes = registery.filter((recipe) => {
+  const filteredRecipes = recipes.filter((recipe) => {
     return recipe.name.toLocaleLowerCase().includes(query.toLocaleLowerCase());
   });
 
@@ -62,7 +46,7 @@ export function RecipeList() {
               ? (
                   filteredRecipes.map((item) => (
                     <li key={item.id}>
-                      <a href={`/recipes/${item.name.toLowerCase()}-${item.id}`} class={styles.recipeItem}>
+                      <a href={`/recipes/${item.id}`} class={styles.recipeItem}>
                         <svg width="14" height="14" viewBox="0 0 24 24">
                           <use href="/ui.svg#hash" />
                         </svg>
