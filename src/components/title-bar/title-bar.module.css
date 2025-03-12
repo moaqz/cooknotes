@@ -4,6 +4,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg);
 }
 
 .navigation,
