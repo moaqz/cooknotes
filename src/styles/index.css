@@ -102,6 +102,13 @@ input[type="number"]::-webkit-inner-spin-button {
   border-radius: 0.25rem;
   background: var(--base-900);
   color: var(--secondary-text);
+
+  &[aria-invalid="true"]{
+    border: 1px solid var(--red-600);
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: var(--red-600);
+  }
 }
 
 .textArea {

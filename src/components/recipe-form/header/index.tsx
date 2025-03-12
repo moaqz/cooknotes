@@ -1,6 +1,14 @@
 import styles from "./header.module.css";
 
-import { FormStore, Field } from "@modular-forms/preact";
+import {
+  FormStore,
+  Field,
+  minRange,
+  required,
+  minLength,
+  maxLength,
+  toCustom,
+} from "@modular-forms/preact";
 
 import { RecipeFormData } from "~/types";
 
@@ -8,12 +16,31 @@ interface FormHeaderProps {
   of: FormStore<RecipeFormData>
 }
 
+function toNumber() {
+  return toCustom<number>((value) => {
+    if (value == null) {
+      return undefined;
+    }
+
+    const num = Number.parseInt(value.toString());
+    return Number.isNaN(num) ? undefined : num;
+  }, { on: "input" });
+}
+
 export function FormHeader(props: FormHeaderProps) {
   const { of: store } = props;
 
   return (
     <div>
-      <Field of={store} name="name">
+      <Field
+        of={store}
+        name="name"
+        validate={[
+          required("Name is required"),
+          minLength(3, "Name must have 3 characters or more"),
+          maxLength(60, "Name must have 60 characters or less"),
+        ]}
+      >
         {(field, props) => (
           <div class={styles.fieldGroup}>
             <input
@@ -24,6 +51,7 @@ export function FormHeader(props: FormHeaderProps) {
               minLength={3}
               required
               aria-label="Título de la receta"
+              aria-invalid={!!field.error.value}
               value={field.value}
               {...props}
             />
@@ -35,19 +63,26 @@ export function FormHeader(props: FormHeaderProps) {
         )}
       </Field>
 
-      <Field of={store} name="cooking_time" type="number">
+      <Field
+        of={store}
+        name="cooking_time"
+        type="number"
+        validate={[
+          minRange(0, "The minium cooking time is zero."),
+        ]}
+        transform={toNumber()}
+      >
         {(field, props) => (
           <div class={styles.fieldGroup}>
             <label for={field.name}>Tiempo</label>
             <input
               id={field.name}
-              type="number"
-              min="1"
-              max="999"
-              pattern="[0-9]*"
-              placeholder="180"
               class="textField"
               value={field.value}
+              required
+              min={0}
+              type="number"
+              aria-invalid={!!field.error.value}
               {...props}
             />
           </div>
