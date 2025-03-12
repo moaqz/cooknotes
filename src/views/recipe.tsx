@@ -126,13 +126,6 @@ export function RecipeView() {
           Editar receta
         </a>
 
-        <button class="btn">
-          <svg width="20" height="20" aria-hidden="true">
-            <use href="/recipe.svg#printer" />
-          </svg>
-          Imprimir
-        </button>
-
         <button
           class="btn btn-danger"
           onClick={deleteRecipe}
