@@ -5,15 +5,25 @@ import { readJSONFile } from "~/lib/fs";
 import { getLocalImage } from "~/lib/image";
 import { Recipe } from "~/types";
 
-interface Props {
+interface UseRecipeOptions {
   normalizeImage?: boolean;
 }
 
-export function useRecipe(props: Props = {}) {
-  const { normalizeImage } = props;
+async function processMainImage(normalize: boolean, imagePath?: string) {
+  if (!normalize) {
+    return imagePath;
+  }
+
+  return imagePath
+    ? await getLocalImage(imagePath)
+    : "/illustrations/food-placeholder.webp";
+}
+
+export function useRecipe(props: UseRecipeOptions = {}) {
+  const { normalizeImage = false } = props;
   const { route } = useLocation();
   const { id } = useRoute().params;
-  const [recipeData, setRecipeData] = useState<Recipe | null>(null);
+  const [recipeState, setRecipeState] = useState<Recipe | null>(null);
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
@@ -21,16 +31,19 @@ export function useRecipe(props: Props = {}) {
       try {
         const path = `recipes/${id}.json`;
         const recipe = await readJSONFile<Recipe>(path);
+        const main_image = await processMainImage(
+          normalizeImage,
+          recipe.data.main_image
+        );
 
-        const main_image = normalizeImage
-          ? recipe.main_image
-            ? await getLocalImage(recipe.main_image)
-            : "/illustrations/food-placeholder.webp"
-          : recipe.main_image;
-
-        setRecipeData({
-          ...recipe,
-          main_image
+        setRecipeState({
+          data: {
+            ...recipe.data,
+            main_image,
+          },
+          metadata: {
+            ...recipe.metadata
+          }
         });
         setIsFetching(false);
       } catch (e) {
@@ -42,5 +55,5 @@ export function useRecipe(props: Props = {}) {
     fetchRecipe();
   }, [id]);
 
-  return { recipeData, isFetching };
+  return { recipeState, isFetching };
 }

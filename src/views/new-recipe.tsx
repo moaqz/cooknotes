@@ -17,8 +17,10 @@ export function NewRecipeView() {
       handleOnSubmit={async (data) => {
         const recipeIdentifier = toKebabCase(data.name);
         const recipe: Recipe = {
-          ...data,
-          created_at: new Date().toISOString(),
+          data,
+          metadata: {
+            created_at: new Date().toISOString(),
+          }
         };
 
         const recipeEntries = await listRecipes("recipes");

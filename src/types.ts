@@ -26,14 +26,7 @@ export type RecipeEntry = {
 export type RecipeEntries = RecipeEntry[];
 
 export type RecipeStep = {
-  /**
-   * Description of the step in the recipe.
-   */
   description: string;
-  /**
-   * Array of image URLs related to this step.
-   */
-  images: string[];
 };
 
 export type IngredientSection = {
@@ -42,24 +35,18 @@ export type IngredientSection = {
 };
 
 export type Recipe = {
-  name: string;
-  main_image: string;
-  /**
-   * Estimated cooking time in minutes.
-   */
-  cooking_time: number;
-  /**
-   * ISO 8601 timestamp of when the recipe was created.
-   */
-  created_at: string;
-  ingredients?: IngredientSection[];
-  steps?: RecipeStep[];
+  data: {
+    name: string;
+    steps?: RecipeStep[];
+    ingredients?: IngredientSection[];
+    main_image?: string;
+    /* Estimated cooking time in minutes. */
+    cooking_time: number;
+  };
+  metadata: {
+    created_at: string;
+    updated_at?: string;
+  };
 };
 
-export type RecipeFormData = {
-  steps: RecipeStep[];
-  ingredients: IngredientSection[];
-  name: string;
-  main_image: string;
-  cooking_time: number;
-};
+export type RecipeFormData = Recipe["data"];

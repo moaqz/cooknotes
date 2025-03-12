@@ -7,19 +7,19 @@ import { RECIPES_UPDATED_EVENT } from "~/constants";
 import { useRecipe } from "~/hooks/useRecipe";
 import { getRecipePath, renameFile, writeJSONFile } from "~/lib/fs";
 import { toKebabCase } from "~/lib/strings";
-import { Recipe, RecipeFormData } from "~/types";
+import { Recipe } from "~/types";
 
 export function EditRecipeView() {
-  const { recipeData, isFetching } = useRecipe();
+  const { recipeState, isFetching } = useRecipe();
   const location = useLocation();
 
   useEffect(() => {
-    if (!isFetching && !recipeData) {
+    if (!isFetching && !recipeState) {
       location.route("/not-found");
     }
   }, [isFetching]);
 
-  if (isFetching || !recipeData) {
+  if (isFetching || !recipeState) {
     return null;
   }
 
@@ -29,11 +29,11 @@ export function EditRecipeView() {
         default: "Actualizar",
         loading: "Actualizando..."
       }}
-      data={recipeData as RecipeFormData}
+      data={recipeState.data}
       handleOnSubmit={async (data) => {
-        const hasNameChanged = recipeData.name !== data.name;
+        const hasNameChanged = recipeState.data.name !== data.name;
         const newFilePath = getRecipePath(data.name);
-        const oldFilePath = getRecipePath(recipeData.name);
+        const oldFilePath = getRecipePath(recipeState.data.name);
 
         if (hasNameChanged) {
           try {
@@ -56,8 +56,11 @@ export function EditRecipeView() {
 
         try {
           await writeJSONFile<Recipe>(newFilePath, {
-            ...data,
-            created_at: recipeData.created_at
+            data,
+            metadata: {
+              ...recipeState.metadata,
+              updated_at: new Date().toISOString(),
+            }
           });
 
           await emit(RECIPES_UPDATED_EVENT);

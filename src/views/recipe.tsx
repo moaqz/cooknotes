@@ -8,23 +8,23 @@ import { emit } from "@tauri-apps/api/event";
 import { RECIPES_UPDATED_EVENT } from "~/constants";
 
 export function RecipeView() {
-  const { recipeData, isFetching } = useRecipe({ normalizeImage: true });
+  const { recipeState, isFetching } = useRecipe({ normalizeImage: true });
   const { id } = useRoute().params;
   const location = useLocation();
 
   useEffect(() => {
-    if (!isFetching && !recipeData) {
+    if (!isFetching && !recipeState) {
       location.route("/not-found");
     }
   }, [isFetching]);
 
-  if (isFetching || !recipeData) {
+  if (isFetching || !recipeState) {
     return null;
   }
 
   const formattedDate = new Intl.DateTimeFormat("es", {
     dateStyle: "full",
-  }).format(new Date(recipeData.created_at));
+  }).format(new Date(recipeState.metadata.created_at));
 
   const deleteRecipe = () => {
     toast.confirm({
@@ -35,7 +35,7 @@ export function RecipeView() {
       cancelText: "Cancelar",
       onConfirm: async () => {
         try {
-          const filePath = getRecipePath(recipeData.name);
+          const filePath = getRecipePath(recipeState.data.name);
           await deleteFile(filePath);
           toast.success({
             title: "Receta eliminada",
@@ -63,14 +63,14 @@ export function RecipeView() {
         <div class={styles.leftSection}>
           <img
             class={styles.recipeImage}
-            src={recipeData.main_image}
-            alt={recipeData.name || "placeholder"}
+            src={recipeState.data.main_image}
+            alt={recipeState.data.name || "placeholder"}
           />
 
           <div class={styles.contentGroup}>
             <h2>Ingredientes</h2>
 
-            {recipeData.ingredients?.map((section, idx) => (
+            {recipeState.data.ingredients?.map((section, idx) => (
               <div key={section.section_name || idx} class={styles.ingredientsGroup}>
                 {section.section_name ? <h3>{section.section_name}</h3> : null}
 
@@ -89,16 +89,16 @@ export function RecipeView() {
         <div class={styles.rightSection}>
           <div>
             <h1>
-              {recipeData.name}
+              {recipeState.data.name}
             </h1>
 
             <div class={styles.recipeMeta}>
-              <time datetime={recipeData.created_at}>{formattedDate}</time>
+              <time datetime={recipeState.metadata.created_at}>{formattedDate}</time>
 
-              {recipeData.cooking_time > 0
+              {recipeState.data.cooking_time > 0
                 ? <>
                   <span role="separator">·</span>
-                  <p>{recipeData.cooking_time} minutos</p>
+                  <p>{recipeState.data.cooking_time} minutos</p>
                 </>
                 : null}
             </div>
@@ -108,7 +108,7 @@ export function RecipeView() {
             <h2>Paso a Paso</h2>
 
             <ol class={styles.stepsList}>
-              {recipeData.steps?.map((item, idx) => (
+              {recipeState.data.steps?.map((item, idx) => (
                 <li key={idx} class={styles.step}>
                   {item.description}
                 </li>
