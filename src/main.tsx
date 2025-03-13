@@ -6,7 +6,6 @@ import "./styles/reset.css";
 import "./styles/index.css";
 
 import { RecipeList } from "./components/recipe-list";
-import { AppDetails } from "./components/app-details";
 import { TitleBar } from "./components/title-bar";
 
 const NewRecipeView = lazy(() => import("~/views/new-recipe").then((m) => m.NewRecipeView));
@@ -19,7 +18,6 @@ function App() {
     <LocationProvider>
       <section class="menubar">
         <RecipeList />
-        <AppDetails />
       </section>
 
       <div class="page">
