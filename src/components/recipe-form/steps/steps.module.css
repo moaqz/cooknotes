@@ -30,7 +30,8 @@
     justify-content: center;
     height: var(--number-size);
     width: var(--number-size);
-    background-color: var(--cyan-600);
+    background-color: var(--accent-cyan);
+    color: white;
     font-weight: bold;
     border-radius: 50vh;
     content: counter(stepsCounter);
@@ -48,6 +49,6 @@
 
   &:enabled:hover {
     color: var(--primary-text);
-    background-color: var(--base-900);
+    background-color: var(--ui);
   }
 }

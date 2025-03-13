@@ -20,6 +20,6 @@
 }
 
 .link {
-  color: var(--cyan-600);
+  color: var(--accent-cyan);
   font-weight: bold;
 }

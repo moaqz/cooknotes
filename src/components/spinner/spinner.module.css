@@ -8,5 +8,5 @@
   animation-duration: 1s;
   animation-name: spin;
   animation-iteration-count: infinite;
-  color: var(--yellow-400);
+  color: var(--accent-yellow);
 }

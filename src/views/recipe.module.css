@@ -26,13 +26,14 @@
 
 .recipeImage {
   aspect-ratio: 1/1;
-  border: 1px solid var(--base-900);
+  border: 1px solid var(--ui);
+  object-fit: cover;
   border-radius: 0.75rem;
 }
 
 .ingredient {
   padding: 0.25rem;
-  border-bottom: 1px dashed var(--base-850);
+  border-bottom: 1px dashed var(--ui);
 }
 
 .ingredient:last-child {
@@ -63,7 +64,8 @@
     justify-content: center;
     height: var(--number-size);
     width: var(--number-size);
-    background-color: var(--cyan-600);
+    color: white;
+    background-color: var(--accent-cyan);
     font-weight: bold;
     border-radius: 50vh;
     content: counter(stepsCounter);
@@ -76,7 +78,7 @@
   padding: 1rem;
   margin-top: 0.5rem;
   width: 100%;
-  border-top: 1px solid var(--base-900);
+  border-top: 1px solid var(--ui);
   display: flex;
   align-items: center;
   gap: 0.5rem;

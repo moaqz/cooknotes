@@ -30,7 +30,7 @@
 
   &:hover:enabled {
     color: var(--primary-text);
-    background-color: var(--base-900);
+    background-color: var(--ui);
   }
 
   &:disabled {
