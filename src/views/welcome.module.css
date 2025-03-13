@@ -1,0 +1,25 @@
+.container {
+  max-width: var(--max-content-width);
+  height: calc(100dvh - 120px);
+  display: grid;
+  place-content: center;
+  gap: 1.5rem;
+  margin-inline: auto;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: -0.05rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.link {
+  color: var(--cyan-600);
+  font-weight: bold;
+}
