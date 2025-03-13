@@ -1,8 +1,3 @@
-/**
- * Index file containing the recipe registry.
- */
-export const REGISTERY_FILE = "registery.json";
-
 export const DEFAULT_RECIPE_FORM_VALUES = {
   steps: [
     { description: "", images: [] },
