@@ -1,8 +1,16 @@
 import styles from "./title-bar.module.css";
+
 import { useLocation } from "preact-iso";
+import { useHistory } from "~/hooks/use-history";
 
 export function TitleBar() {
   const location = useLocation();
+  const {
+    canGoBackward,
+    canGoForward,
+    goBackward,
+    goForward
+  } = useHistory();
 
   return (
     <header class={styles.titleBar}>
@@ -11,7 +19,8 @@ export function TitleBar() {
           type="button"
           class={styles.iconBtn}
           title="Retroceder"
-          disabled
+          disabled={!canGoBackward}
+          onClick={goBackward}
         >
           <svg width="20" height="20" aria-hidden="true">
             <use href="/title-bar.svg#arrow-left" />
@@ -22,7 +31,8 @@ export function TitleBar() {
           type="button"
           class={styles.iconBtn}
           title="Avanzar"
-          disabled
+          disabled={!canGoForward}
+          onClick={goForward}
         >
           <svg width="20" height="20" aria-hidden="true">
             <use href="/title-bar.svg#arrow-right" />
