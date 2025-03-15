@@ -2,7 +2,7 @@ import { toast } from "@moaqzdev/toast";
 import styles from "./recipe.module.css";
 import { useLocation, useRoute } from "preact-iso";
 import { useEffect } from "preact/hooks";
-import { useRecipe } from "~/hooks/useRecipe";
+import { useRecipe } from "~/hooks/use-recipe";
 import { deleteFile, getRecipePath } from "~/lib/fs";
 import { emit } from "@tauri-apps/api/event";
 import { RECIPES_UPDATED_EVENT } from "~/constants";

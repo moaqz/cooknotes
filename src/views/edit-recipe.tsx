@@ -4,7 +4,7 @@ import { useLocation } from "preact-iso";
 import { useEffect } from "preact/hooks";
 import { RecipeForm } from "~/components/recipe-form";
 import { RECIPES_UPDATED_EVENT } from "~/constants";
-import { useRecipe } from "~/hooks/useRecipe";
+import { useRecipe } from "~/hooks/use-recipe";
 import { getRecipePath, renameFile, writeJSONFile } from "~/lib/fs";
 import { toKebabCase } from "~/lib/strings";
 import { Recipe } from "~/types";
