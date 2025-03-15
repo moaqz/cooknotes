@@ -38,6 +38,7 @@
   --max-content-width: 80rem;
   --menubar-size: 18rem;
   --menubar-zindex: 20;
+  --titlebar-zindex: 20;
 
   /* Light theme */
   --bg: var(--paper);

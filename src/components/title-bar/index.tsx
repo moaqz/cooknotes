@@ -40,10 +40,6 @@ export function TitleBar() {
         </button>
       </div>
 
-      <span class={styles.tabTitle}>
-        {new Intl.DateTimeFormat("es", { day: "2-digit", month: "long", year: "numeric" }).format(new Date())}
-      </span>
-
       <div class={styles.actions}>
         <button
           type="button" class={styles.iconBtn}

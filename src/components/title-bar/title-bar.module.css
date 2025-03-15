@@ -5,6 +5,7 @@
   justify-content: space-between;
   padding: 1rem;
   position: sticky;
+  z-index: var(--titlebar-zindex);
   top: 0;
   background-color: var(--bg);
 }
@@ -36,10 +37,4 @@
   &:disabled {
     opacity: .50;
   }
-}
-
-.tabTitle {
-  font-size: var(--font-sm);
-  color: var(--secondary-text);
-  font-weight: bold;
 }
