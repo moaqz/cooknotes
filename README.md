@@ -28,13 +28,13 @@ Contributions and suggestions are always welcome.
 
 ## 🖼️ Screenshots
 
-![Recipe view in light mode](./public/screnshoots/screenshot-es-01.png)
+![Recipe view in light mode](./public/screnshoots/screenshot-es-01.webp)
 
-![Recipe view in light mode](./public/screnshoots/screenshot-es-04.png)
+![Recipe view in light mode](./public/screnshoots/screenshot-es-04.webp)
 
-![Edit recipe view](./public/screnshoots/screenshot-es-02.png)
+![Edit recipe view](./public/screnshoots/screenshot-es-02.webp)
 
-![Create recipe view](./public/screnshoots/screenshot-es-03.png)
+![Create recipe view](./public/screnshoots/screenshot-es-03.webp)
 
 ## 🚀 Getting started
 
