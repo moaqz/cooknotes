@@ -8,8 +8,13 @@ export async function getLocalImage(imageSrc: string) {
   return convertFileSrc(imagePath);
 }
 
+async function getAsByteArray(file: File) {
+  const buffer = await file.arrayBuffer();
+  return new Uint8Array(buffer);
+}
+
 export async function copyImage(name: string, file: File) {
-  const content = await file.bytes();
+  const content = await getAsByteArray(file);
   return writeFile(`images/${name}`, content, {
     baseDir: BaseDirectory.AppLocalData,
   });
