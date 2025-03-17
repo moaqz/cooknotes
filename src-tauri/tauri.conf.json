@@ -20,12 +20,17 @@
       }
     ],
     "security": {
-      "csp": "default-src 'self' ws: ipc: http://ipc.localhost; img-src 'self' asset: http://asset.localhost",
       "assetProtocol": {
         "enable": true,
         "scope": [
           "$APPLOCALDATA/images/**"
         ]
+      },
+      "csp": {
+        "default-src": "'self'",
+        "connect-src": "'self' ipc: http://ipc.localhost",
+        "img-src": "'self' asset: http://asset.localhost",
+        "style-src": "'unsafe-inline' 'self'"
       }
     }
   },
