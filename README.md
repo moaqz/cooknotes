@@ -1,8 +1,8 @@
-[Features](#features) •
-[Planned Features](#planned-features) •
-[Screenshots](#screenshots) •
-[Downloads](#downloads) •
-[Getting Started](#getting-started) •
+[Features](#-features) •
+[Planned Features](#-planned-features) •
+[Screenshots](#-screenshots) •
+[Downloads](#-downloads) •
+[Getting Started](#-getting-started) •
 [Motivation](#motivation) 
 
 # Cooknotes
@@ -26,7 +26,7 @@ Cooknotes is a local-first recipe management app.
 
 Contributions and suggestions are always welcome.
 
-## 🖼️ Screenshots
+## 📸 Screenshots
 
 ![Recipe view in light mode](./public/screnshoots/screenshot-es-01.webp)
 
