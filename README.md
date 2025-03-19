@@ -78,9 +78,9 @@ pnpm tauri dev
 
 | Platform | Version  | Download |
 | -------- | -------- | --------  |
-| Windows  | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases/download/v1.0.0/cooknotes_1.0.0_x64-setup.exe)  |
-| Linux    | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases/download/v1.0.0/cooknotes_1.0.0_amd64.AppImage)  |
-| MacOS    | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases/download/v1.0.0/cooknotes_1.0.0_aarch64.dmg)  |
+| Windows  | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases)  |
+| Linux    | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases)  |
+| MacOS    | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases)  |
 
 ## Motivation
 
