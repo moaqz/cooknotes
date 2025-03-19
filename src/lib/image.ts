@@ -1,6 +1,7 @@
 import { convertFileSrc } from "@tauri-apps/api/core";
 import { appLocalDataDir, join } from "@tauri-apps/api/path";
 import { writeFile, BaseDirectory } from "@tauri-apps/plugin-fs";
+import { createDirectory } from "./fs";
 
 export async function getLocalImage(imageSrc: string) {
   const localDir = await appLocalDataDir();
@@ -14,8 +15,11 @@ async function getAsByteArray(file: File) {
 }
 
 export async function copyImage(name: string, file: File) {
+  const path = `images/${name}`;
+  await createDirectory(path);
+
   const content = await getAsByteArray(file);
-  return writeFile(`images/${name}`, content, {
+  return writeFile(path, content, {
     baseDir: BaseDirectory.AppLocalData,
   });
 }

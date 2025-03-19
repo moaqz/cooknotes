@@ -23,8 +23,11 @@ export function NewRecipeView() {
           }
         };
 
-        const recipeEntries = await listRecipes("recipes");
-        const fileExists = recipeEntries.find((entry) => entry.id === recipeIdentifier);
+        const recipeEntries = await listRecipes("recipes").catch(() => []);
+        const fileExists = recipeEntries.find((entry) => {
+          return entry.id === recipeIdentifier;
+        });
+
         if (fileExists) {
           toast.error({
             title: "Nombre de receta en uso",

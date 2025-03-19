@@ -42,6 +42,14 @@
           "path": "$APPLOCALDATA/*"
         }
       ]
+    },
+    {
+      "identifier": "fs:allow-mkdir",
+      "allow": [
+        {
+          "path": "$APPLOCALDATA/*"
+        }
+      ]
     }
   ]
 }
