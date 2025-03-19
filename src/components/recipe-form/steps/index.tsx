@@ -41,7 +41,7 @@ export function Steps(props: StepsProps) {
         <FieldArray of={store} name="steps">
           {(fieldArray) => (
             fieldArray.items.value.map((item, idx) => (
-              <li key={item} class={`${styles.step} ${styles.numbered}`}>
+              <li key={item} class={`${styles.step} numbered`}>
                 <Field of={store} name={`steps.${idx}.description`}>
                   {(field, props) => (
                     <textarea

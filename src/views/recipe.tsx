@@ -109,7 +109,7 @@ export function RecipeView() {
 
             <ol class={styles.stepsList}>
               {recipeState.data.steps?.map((item, idx) => (
-                <li key={idx} class={styles.step}>
+                <li key={idx} class={`${styles.step} numbered`}>
                   {item.description}
                 </li>
               ))}

@@ -57,19 +57,6 @@
   align-items: center;
   gap: 0.5rem;
   text-wrap: pretty;
-
-  &:before {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: var(--number-size);
-    width: var(--number-size);
-    color: white;
-    background-color: var(--accent-cyan);
-    font-weight: bold;
-    border-radius: 50vh;
-    content: counter(stepsCounter);
-  }
 }
 
 .actions {

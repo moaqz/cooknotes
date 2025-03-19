@@ -175,3 +175,22 @@ input[type="number"]::-webkit-inner-spin-button {
     background-color: var(--accent-red);
   }
 }
+
+.numbered {
+  --number-size: 1.5rem;
+  counter-increment: stepsCounter 1;
+
+  &:before {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--number-size);
+    width: var(--number-size);
+    background-color: var(--accent-cyan);
+    color: white;
+    font-weight: bold;
+    border-radius: 50vh;
+    content: counter(stepsCounter);
+  }
+}
