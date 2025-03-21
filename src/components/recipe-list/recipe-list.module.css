@@ -31,7 +31,8 @@
   align-items: center;
   gap: 0.5rem;
 
-  &:hover {
+  &:hover,
+  &[data-selected="true"] {
     color: var(--primary-text);
     background-color: var(--ui);
   }

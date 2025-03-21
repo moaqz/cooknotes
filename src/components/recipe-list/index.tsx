@@ -6,12 +6,14 @@ import { RecipeEntries } from "~/types";
 import { listRecipes } from "~/lib/fs";
 import { listen, UnlistenFn } from "@tauri-apps/api/event";
 import { RECIPES_UPDATED_EVENT } from "~/constants";
+import { useLocation } from "preact-iso";
 
 export function RecipeList() {
   const [recipes, setRecipes] = useState<RecipeEntries>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isRefetching, setIsRefetching] = useState(false);
   const [query, setQuery] = useState("");
+  const { path: currentPath } = useLocation();
 
   const fetchRecipes = async () => {
     setIsLoading(true);
@@ -62,16 +64,21 @@ export function RecipeList() {
           <ul class={styles.recipeList}>
             {hasRecipes
               ? (
-                  filteredRecipes.map((item) => (
-                    <li key={item.id}>
-                      <a href={`/recipes/${item.id}`} class={styles.recipeItem}>
-                        <svg width="14" height="14" viewBox="0 0 24 24">
-                          <use href="/ui.svg#hash" />
-                        </svg>
-                        {item.name}
-                      </a>
-                    </li>
-                  ))
+                  filteredRecipes.map((item) => {
+                    const recipePath = `/recipes/${item.id}`;
+                    const isActive = decodeURIComponent(recipePath) === decodeURIComponent(currentPath);
+
+                    return (
+                      <li key={item.id}>
+                        <a href={recipePath} class={styles.recipeItem} data-selected={isActive}>
+                          <svg width="14" height="14" viewBox="0 0 24 24">
+                            <use href="/ui.svg#hash" />
+                          </svg>
+                          {item.name}
+                        </a>
+                      </li>
+                    );
+                  })
                 )
               : <p class={styles.notFoundMessage}>
                 Aún no tienes recetas {query ? <>de <span>{query}</span></> : null} en tu colección.
