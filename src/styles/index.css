@@ -51,6 +51,9 @@
   --accent-red: var(--red-600);
   --accent-cyan: var(--cyan-600);
   --accent-yellow: var(--yellow-600);
+  --accent-green: var(--green-600);
+  --accent-blue: var(--blue-600);
+  --accent-purple: var(--purple-600);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -65,6 +68,9 @@
     --accent-red: var(--red-400);
     --accent-cyan: var(--cyan-400);
     --accent-yellow: var(--yellow-400);
+    --accent-green: var(--green-400);
+    --accent-blue: var(--blue-400);
+    --accent-purple: var(--purple-400);
   }
 }
 
@@ -193,4 +199,19 @@ input[type="number"]::-webkit-inner-spin-button {
     border-radius: 50vh;
     content: counter(stepsCounter);
   }
+}
+
+moaqz-toaster {
+  --toast-background: var(--bg-2);
+  --toast-border: var(--ui);
+  --toast-title: var(--primary-text);
+  --toast-description: var(--secondary-text);
+
+  --toast-success: var(--accent-green);
+  --toast-error: var(--accent-red);
+  --toast-warning: var(--accent-yellow);
+  --toast-info: var(--accent-blue);
+  --toast-confirm: var(--accent-purple);
+
+  --toast-actions-cancel-background-color: var(--accent-red);
 }
