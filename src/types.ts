@@ -1,9 +1,9 @@
+import { ToasterAttributes } from "@moaqzdev/toast";
+
 declare global {
   namespace preact.JSX {
     interface IntrinsicElements {
-      "moaqz-toaster": {
-        dismissable: boolean
-      };
+      "moaqz-toaster": Partial<ToasterAttributes>;
     }
   }
 }
