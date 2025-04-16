@@ -1,4 +1,5 @@
 import { ToasterAttributes } from "@moaqzdev/toast";
+import { ACCENTS } from "./constants";
 
 declare global {
   namespace preact.JSX {
@@ -52,3 +53,5 @@ export type Recipe = {
 export type RecipeFormData = Recipe["data"];
 
 export type Theme = "system" | "dark" | "light";
+
+export type Accent = typeof ACCENTS[number];

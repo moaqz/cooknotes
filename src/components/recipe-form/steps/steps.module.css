@@ -30,7 +30,7 @@
     justify-content: center;
     height: var(--number-size);
     width: var(--number-size);
-    background-color: var(--accent-cyan);
+    background-color: var(--accent);
     color: white;
     font-weight: bold;
     border-radius: 50vh;

@@ -1,5 +1,6 @@
 import { ThemePicker } from "~/components/theme-picker";
 import styles from "./settings.module.css";
+import { AccentPicker } from "~/components/accent-picker";
 
 export function SettingsView() {
   return (
@@ -14,6 +15,11 @@ export function SettingsView() {
           <section class={styles.settingsSection}>
             <h3>Tema</h3>
             <ThemePicker />
+          </section>
+
+          <section class={styles.settingsSection}>
+            <h3>Color de acentuación</h3>
+            <AccentPicker />
           </section>
         </div>
       </div>

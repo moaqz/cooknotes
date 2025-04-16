@@ -1,10 +1,11 @@
 import { createContext } from "preact";
 import { useEffect, useState, type PropsWithChildren } from "preact/compat";
 import { SETTINGS_KEY } from "~/constants";
-import type { Theme } from "~/types";
+import type { Accent, Theme } from "~/types";
 
 export interface AppConfig {
   theme: Theme;
+  accent: Accent;
 }
 
 export interface SettingsContextValue {
@@ -14,6 +15,7 @@ export interface SettingsContextValue {
 
 const DEFAULT_APP_CONFIG: AppConfig = {
   theme: "system",
+  accent: "cyan",
 };
 
 export const AppConfigContext = createContext<SettingsContextValue | null>(null);
@@ -39,6 +41,7 @@ export function AppSettingsProvider(props: PropsWithChildren) {
       : settings.theme;
 
     document.documentElement.dataset.theme = theme;
+    document.documentElement.dataset.accent = settings.accent;
   }, [settings]);
 
   const setSetting = <K extends keyof AppConfig>(key: K, value: AppConfig[K]) => {

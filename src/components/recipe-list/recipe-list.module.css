@@ -46,6 +46,6 @@
 
   & span {
     font-weight: 600;
-    color: var(--accent-yellow);
+    color: var(--accent);
   }
 }

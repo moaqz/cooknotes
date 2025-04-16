@@ -39,6 +39,8 @@
   --menubar-size: 18rem;
   --menubar-zindex: 20;
   --titlebar-zindex: 20;
+
+  --accent: var(--accent-cyan);
 }
 
 :root[data-theme="light"] {
@@ -73,6 +75,30 @@
   --accent-green: var(--green-400);
   --accent-blue: var(--blue-400);
   --accent-purple: var(--purple-400);
+}
+
+[data-accent="red"] {
+  --accent: var(--accent-red);
+}
+
+[data-accent="cyan"] {
+  --accent: var(--accent-cyan);
+}
+
+[data-accent="purple"] {
+  --accent: var(--accent-purple);
+}
+
+[data-accent="yellow"] {
+  --accent: var(--accent-yellow);
+}
+
+[data-accent="green"] {
+  --accent: var(--accent-green);
+}
+
+[data-accent="blue"] {
+  --accent: var(--accent-blue);
 }
 
 body {
@@ -193,7 +219,7 @@ input[type="number"]::-webkit-inner-spin-button {
     justify-content: center;
     height: var(--number-size);
     width: var(--number-size);
-    background-color: var(--accent-cyan);
+    background-color: var(--accent);
     color: white;
     font-weight: bold;
     border-radius: 50vh;
@@ -236,7 +262,7 @@ input[type="radio"]::before {
   border-radius: 50%;
   transform: scale(0);
   transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--accent-cyan);
+  box-shadow: inset 1em 1em var(--accent);
 }
 
 input[type="radio"]:checked::before {
