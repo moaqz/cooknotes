@@ -4,6 +4,7 @@
   flex: 1;
   gap: 0.5rem;
   max-height: 95dvh;
+  padding: 1.5rem 0.75rem;
 }
 
 .title {

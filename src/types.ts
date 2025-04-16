@@ -50,3 +50,5 @@ export type Recipe = {
 };
 
 export type RecipeFormData = Recipe["data"];
+
+export type Theme = "system" | "dark" | "light";

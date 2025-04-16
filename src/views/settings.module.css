@@ -1,0 +1,40 @@
+.container {
+  width: 100%;
+  max-width: var(--max-content-width);
+  padding: 1rem;
+  margin-inline: auto;
+}
+
+.settingsGroup {
+  padding-block: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  &:not(:first-child) {
+    border-bottom: 1px solid var(--ui-2);
+  }
+}
+
+.settingsGroupHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  &>h1 {
+    color: var(--primary-text);
+  }
+
+  &>p {
+    color: var(--secondary-text);
+  }
+}
+
+.settingsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+}
