@@ -45,7 +45,7 @@ export function useTranslation() {
       const keys = key.split(".");
       return getNestedValue(locale, keys) ?? getNestedValue(FALLBACK_LANGUAGE, keys) ?? key;
     },
-    [locale],
+    [locale]
   );
 
   return t;

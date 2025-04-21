@@ -100,12 +100,14 @@ export function RecipeView() {
                 {formattedDate}
               </time>
 
-              {recipeState.data.cooking_time > 0 ? (
-                <>
-                  <span role="separator">·</span>
-                  <p>{recipeState.data.cooking_time} minutos</p>
-                </>
-              ) : null}
+              {recipeState.data.cooking_time > 0
+                ? (
+                  <>
+                    <span role="separator">·</span>
+                    <p>{recipeState.data.cooking_time} minutos</p>
+                  </>
+                  )
+                : null}
             </div>
           </div>
 

@@ -62,8 +62,7 @@ export function Steps(props: StepsProps) {
                   </svg>
                 </button>
               </li>
-            ))
-          }
+            ))}
         </FieldArray>
       </ol>
 

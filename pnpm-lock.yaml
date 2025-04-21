@@ -21,8 +21,8 @@ importers:
         specifier: ^2
         version: 2.2.0
       '@tauri-apps/plugin-fs':
-        specifier: ^2.2.0
-        version: 2.2.0
+        specifier: ^2.2.1
+        version: 2.2.1
       '@tauri-apps/plugin-opener':
         specifier: ^2
         version: 2.2.5
@@ -51,6 +51,9 @@ importers:
       eslint-config-moaqz:
         specifier: ^0.3.0
         version: 0.3.0(eslint@9.24.0)(typescript@5.7.3)
+      lefthook:
+        specifier: ^1.11.10
+        version: 1.11.11
       typescript:
         specifier: ~5.7.2
         version: 5.7.3
@@ -632,8 +635,8 @@ packages:
     engines: {node: '>= 10'}
     hasBin: true
 
-  '@tauri-apps/plugin-fs@2.2.0':
-    resolution: {integrity: sha512-+08mApuONKI8/sCNEZ6AR8vf5vI9DXD4YfrQ9NQmhRxYKMLVhRW164vdW5BSLmMpuevftpQ2FVoL9EFkfG9Z+g==}
+  '@tauri-apps/plugin-fs@2.2.1':
+    resolution: {integrity: sha512-KdGzvvA4Eg0Dhw55MwczFbjxLxsTx0FvwwC/0StXlr6IxwPUxh5ziZQoaugkBFs8t+wfebdQrjBEzd8NmmDXNw==}
 
   '@tauri-apps/plugin-opener@2.2.5':
     resolution: {integrity: sha512-hHsJ9RPWpZvZEPVFaL+d25gABMUMOf/A6ESXnvf/ii9guTukj58WXsAE/SOysXRIhej7kseRCxnOnIMpSCdUsQ==}
@@ -1419,6 +1422,60 @@ packages:
 
   kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
+
+  lefthook-darwin-arm64@1.11.11:
+    resolution: {integrity: sha512-E4jbCkSYClOwrMbbDCuTCZcD6PL3w2aJkBVZQAA/0xAcfETKj4ud1Xe3FzqBCHFIs4OJBtI8FUzbyoM+XpgSUA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  lefthook-darwin-x64@1.11.11:
+    resolution: {integrity: sha512-fQ+kN+aVRPQQPkMqwCCZSENZ+l0R6O8lefNbWrZ05PumN9BJqUIKBB2dm88UfnGzAeg5YQvwoTH0H/BV8lKIEA==}
+    cpu: [x64]
+    os: [darwin]
+
+  lefthook-freebsd-arm64@1.11.11:
+    resolution: {integrity: sha512-FnsvTeRvZ2p09DzOdMoYe5APtVEcfSWUpbJUvJ79yKnWd+E7OTaqgHJ0mV7lz48uZeaCmBa2RMwB+BhKi/LaUA==}
+    cpu: [arm64]
+    os: [freebsd]
+
+  lefthook-freebsd-x64@1.11.11:
+    resolution: {integrity: sha512-jnkfnaBQHBrv2SAsgGPx90JdCuNUfiTWm9kcvOiW6MQs2IkptlAYa+xkkp2QNDhhtcF+4wVSbTqLgDZ/j9Xr0w==}
+    cpu: [x64]
+    os: [freebsd]
+
+  lefthook-linux-arm64@1.11.11:
+    resolution: {integrity: sha512-3SO2srRpKR/XR7HeC8J1yaCiYH8wsKZyM7jLAwiGQxoF425+iEQmAZIYv3P/eEtt8Tnwtdzaz5uGwZlrN3Io8Q==}
+    cpu: [arm64]
+    os: [linux]
+
+  lefthook-linux-x64@1.11.11:
+    resolution: {integrity: sha512-/qz/PAe8fT+/7U9VZxFwVqIlJCAdfGQ6Fsy5399sBmwBBV0fa09ibMqQLdUkXJv5ZP1Lp8JzsJinz8eeMQTgfA==}
+    cpu: [x64]
+    os: [linux]
+
+  lefthook-openbsd-arm64@1.11.11:
+    resolution: {integrity: sha512-mkNgdOClVqIT4JQakRXrY1iAXA8k+y/PiVlqtRVxPWVjx47tSMQHC0U+ef2d9JmYHh4Dk8htRX8D0rpkiMudkA==}
+    cpu: [arm64]
+    os: [openbsd]
+
+  lefthook-openbsd-x64@1.11.11:
+    resolution: {integrity: sha512-Chhf5lRrrc6FdfYsbfjbV8pY1ZQJ0D6Jkq07WKSCusL/NVRCzg4uxWzD3tyJMtFwy2gMbmup4/P0sX/e6jcy8A==}
+    cpu: [x64]
+    os: [openbsd]
+
+  lefthook-windows-arm64@1.11.11:
+    resolution: {integrity: sha512-253PgkB58+tI9EmqqbjRCyD3P73njdE14zTmrfMjZK1gIlKLZiPFq3K1YgRGh/OOieKdAum4LxlGKkhXg4w3ZQ==}
+    cpu: [arm64]
+    os: [win32]
+
+  lefthook-windows-x64@1.11.11:
+    resolution: {integrity: sha512-n+r5RtXCVqKNYc3AR1Vj2NQKKg2Fu79NsmqiiEA7S6ahG+DOqagI7PeJWM1PIqlRid50JyYNM2mWxb7DAe0ZFw==}
+    cpu: [x64]
+    os: [win32]
+
+  lefthook@1.11.11:
+    resolution: {integrity: sha512-TZAbpT13+grDIMwmdvGCEVLsJCwRDCcQjUyeoUFUDJZyc9E4Oztjo0cwaLX9CMGF68ISmj1arRg6KgvU2e/oEg==}
+    hasBin: true
 
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
@@ -2465,7 +2522,7 @@ snapshots:
       '@tauri-apps/cli-win32-ia32-msvc': 2.2.7
       '@tauri-apps/cli-win32-x64-msvc': 2.2.7
 
-  '@tauri-apps/plugin-fs@2.2.0':
+  '@tauri-apps/plugin-fs@2.2.1':
     dependencies:
       '@tauri-apps/api': 2.2.0
 
@@ -3478,6 +3535,49 @@ snapshots:
       json-buffer: 3.0.1
 
   kolorist@1.8.0: {}
+
+  lefthook-darwin-arm64@1.11.11:
+    optional: true
+
+  lefthook-darwin-x64@1.11.11:
+    optional: true
+
+  lefthook-freebsd-arm64@1.11.11:
+    optional: true
+
+  lefthook-freebsd-x64@1.11.11:
+    optional: true
+
+  lefthook-linux-arm64@1.11.11:
+    optional: true
+
+  lefthook-linux-x64@1.11.11:
+    optional: true
+
+  lefthook-openbsd-arm64@1.11.11:
+    optional: true
+
+  lefthook-openbsd-x64@1.11.11:
+    optional: true
+
+  lefthook-windows-arm64@1.11.11:
+    optional: true
+
+  lefthook-windows-x64@1.11.11:
+    optional: true
+
+  lefthook@1.11.11:
+    optionalDependencies:
+      lefthook-darwin-arm64: 1.11.11
+      lefthook-darwin-x64: 1.11.11
+      lefthook-freebsd-arm64: 1.11.11
+      lefthook-freebsd-x64: 1.11.11
+      lefthook-linux-arm64: 1.11.11
+      lefthook-linux-x64: 1.11.11
+      lefthook-openbsd-arm64: 1.11.11
+      lefthook-openbsd-x64: 1.11.11
+      lefthook-windows-arm64: 1.11.11
+      lefthook-windows-x64: 1.11.11
 
   levn@0.4.1:
     dependencies:

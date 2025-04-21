@@ -24,6 +24,7 @@
     "preact-iso": "^2.9.1"
   },
   "devDependencies": {
+    "lefthook": "^1.11.10",
     "@preact/preset-vite": "^2.10.1",
     "@tauri-apps/cli": "^2",
     "@types/node": "^22.14.1",

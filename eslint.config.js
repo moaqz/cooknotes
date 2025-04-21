@@ -5,7 +5,10 @@ export default [
   {
     rules: {
       "@stylistic/jsx-quotes": ["error", "prefer-double"],
-      "@stylistic/jsx-closing-tag-location": "off"
-    }
-  }
+      "@stylistic/jsx-closing-tag-location": "off",
+    },
+  },
+  {
+    ignores: ["src-tauri/*", "dist"],
+  },
 ];
