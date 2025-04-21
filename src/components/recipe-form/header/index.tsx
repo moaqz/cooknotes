@@ -9,6 +9,7 @@ import {
   maxLength,
   toCustom,
 } from "@modular-forms/preact";
+import { useTranslation } from "~/hooks/use-translation";
 
 import { RecipeFormData } from "~/types";
 
@@ -28,6 +29,7 @@ function toNumber() {
 }
 
 export function FormHeader(props: FormHeaderProps) {
+  const t = useTranslation();
   const { of: store } = props;
 
   return (
@@ -50,7 +52,7 @@ export function FormHeader(props: FormHeaderProps) {
               maxlength={60}
               minLength={3}
               required
-              aria-label="Título de la receta"
+              aria-label={t("common.recipe_title_label")}
               aria-invalid={!!field.error.value}
               value={field.value}
               {...props}
@@ -74,7 +76,7 @@ export function FormHeader(props: FormHeaderProps) {
       >
         {(field, props) => (
           <div class={styles.fieldGroup}>
-            <label for={field.name}>Tiempo</label>
+            <label for={field.name}>{t("common.time")}</label>
             <input
               id={field.name}
               class="textField"

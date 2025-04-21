@@ -6,11 +6,15 @@ import { useRecipe } from "~/hooks/use-recipe";
 import { deleteFile, getRecipePath } from "~/lib/fs";
 import { emit } from "@tauri-apps/api/event";
 import { RECIPES_UPDATED_EVENT } from "~/constants";
+import { useTranslation } from "~/hooks/use-translation";
+import { useSetting } from "~/hooks/use-config";
 
 export function RecipeView() {
   const { recipeState, isFetching } = useRecipe({ normalizeImage: true });
   const { id } = useRoute().params;
   const location = useLocation();
+  const t = useTranslation();
+  const [currentLocale] = useSetting("language");
 
   useEffect(() => {
     if (!isFetching && !recipeState) {
@@ -22,32 +26,31 @@ export function RecipeView() {
     return null;
   }
 
-  const formattedDate = new Intl.DateTimeFormat("es", {
+  const formattedDate = new Intl.DateTimeFormat(currentLocale, {
     dateStyle: "full",
   }).format(new Date(recipeState.metadata.created_at));
 
   const deleteRecipe = () => {
     toast.confirm({
-      title: "Eliminar receta",
-      description:
-        "¿Estás seguro de que quieres eliminar esta receta? Esta acción no se puede deshacer.",
-      confirmText: "Eliminar",
-      cancelText: "Cancelar",
+      title: t("toasts.recipe_removal_confirmation.title"),
+      description: t("toasts.recipe_removal_confirmation.description"),
+      confirmText: t("toasts.recipe_removal_confirmation.confirm_text"),
+      cancelText: t("toasts.recipe_removal_confirmation.cancel_text"),
       onConfirm: async () => {
         try {
           const filePath = getRecipePath(recipeState.data.name);
           await deleteFile(filePath);
           toast.success({
-            title: "Receta eliminada",
-            description: "La receta ha sido eliminada correctamente.",
+            title: t("toasts.recipe_removed.title"),
+            description: t("toasts.recipe_removed.description"),
             duration: 8000,
           });
           await emit(RECIPES_UPDATED_EVENT);
           location.route("/");
         } catch (e) {
           toast.error({
-            title: "Error al eliminar",
-            description: "Hubo un problema al eliminar la receta.",
+            title: t("toasts.recipe_not_removed.title"),
+            description: t("toasts.recipe_not_removed.description"),
             duration: 8000,
           });
         }
@@ -59,19 +62,21 @@ export function RecipeView() {
   return (
     <>
       <section class={styles.container}>
-
         <div class={styles.leftSection}>
           <img
             class={styles.recipeImage}
             src={recipeState.data.main_image}
-            alt={recipeState.data.name || "placeholder"}
+            alt={recipeState.data.name}
           />
 
           <div class={styles.contentGroup}>
-            <h2>Ingredientes</h2>
+            <h2>{t("common.ingredients")}</h2>
 
             {recipeState.data.ingredients?.map((section, idx) => (
-              <div key={section.section_name || idx} class={styles.ingredientsGroup}>
+              <div
+                key={section.section_name || idx}
+                class={styles.ingredientsGroup}
+              >
                 {section.section_name ? <h3>{section.section_name}</h3> : null}
 
                 <ul>
@@ -88,24 +93,24 @@ export function RecipeView() {
 
         <div class={styles.rightSection}>
           <div>
-            <h1>
-              {recipeState.data.name}
-            </h1>
+            <h1>{recipeState.data.name}</h1>
 
             <div class={styles.recipeMeta}>
-              <time datetime={recipeState.metadata.created_at}>{formattedDate}</time>
+              <time datetime={recipeState.metadata.created_at}>
+                {formattedDate}
+              </time>
 
-              {recipeState.data.cooking_time > 0
-                ? <>
+              {recipeState.data.cooking_time > 0 ? (
+                <>
                   <span role="separator">·</span>
                   <p>{recipeState.data.cooking_time} minutos</p>
                 </>
-                : null}
+              ) : null}
             </div>
           </div>
 
           <div class={styles.contentGroup}>
-            <h2>Paso a Paso</h2>
+            <h2>{t("common.steps")}</h2>
 
             <ol class={styles.stepsList}>
               {recipeState.data.steps?.map((item, idx) => (
@@ -123,17 +128,14 @@ export function RecipeView() {
           <svg width="20" height="20" aria-hidden="true">
             <use href="/recipe.svg#pencil" />
           </svg>
-          Editar receta
+          {t("common.actions.edit")}
         </a>
 
-        <button
-          class="btn btn-danger"
-          onClick={deleteRecipe}
-        >
+        <button class="btn btn-danger" onClick={deleteRecipe}>
           <svg width="20" height="20" aria-hidden="true">
             <use href="/recipe.svg#trash" />
           </svg>
-          Borrar
+          {t("common.actions.delete")}
         </button>
       </footer>
     </>

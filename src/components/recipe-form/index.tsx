@@ -10,6 +10,7 @@ import { DEFAULT_RECIPE_FORM_VALUES } from "~/constants";
 import { RecipeFormData } from "~/types";
 
 import { useForm } from "@modular-forms/preact";
+import { useTranslation } from "~/hooks/use-translation";
 
 interface RecipeFormProps {
   data?: RecipeFormData;
@@ -21,11 +22,12 @@ interface RecipeFormProps {
 }
 
 export function RecipeForm(props: RecipeFormProps) {
+  const t = useTranslation();
   const {
     handleOnSubmit,
     primaryButtonText = {
-      loading: "Guardando receta...",
-      default: "Crear receta"
+      loading: t("common.actions.create_recipe.loading"),
+      default: t("common.actions.create_recipe.default")
     }
   } = props;
   const [recipeForm, { Form }] = useForm<RecipeFormData>({
@@ -38,7 +40,7 @@ export function RecipeForm(props: RecipeFormProps) {
         <ImageUploader of={recipeForm} />
 
         <div class={styles.contentGroup}>
-          <h2>Ingredientes</h2>
+          <h2>{t("common.ingredients")}</h2>
           <Ingredients of={recipeForm} />
         </div>
       </div>
@@ -47,7 +49,7 @@ export function RecipeForm(props: RecipeFormProps) {
         <FormHeader of={recipeForm} />
 
         <div class={styles.contentGroup}>
-          <h2>Pasos</h2>
+          <h2>{t("common.steps")}</h2>
           <Steps of={recipeForm} />
         </div>
 

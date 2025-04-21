@@ -43,9 +43,4 @@
   padding: 0.25rem;
   text-wrap: pretty;
   font-size: var(--font-sm);
-
-  & span {
-    font-weight: 600;
-    color: var(--accent);
-  }
 }

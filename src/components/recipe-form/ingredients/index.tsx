@@ -1,6 +1,7 @@
 import styles from "./ingredients.module.css";
 
 import { FormStore, FieldArray, Field, insert, remove } from "@modular-forms/preact";
+import { useTranslation } from "~/hooks/use-translation";
 
 import { RecipeFormData } from "~/types";
 
@@ -10,6 +11,7 @@ interface IngredientsProps {
 
 export function Ingredients(props: IngredientsProps) {
   const { of: store } = props;
+  const t = useTranslation();
 
   const addSection = () => {
     const newIngredient = {
@@ -43,8 +45,8 @@ export function Ingredients(props: IngredientsProps) {
                   id={field.name}
                   type="text"
                   class="textField"
-                  placeholder="Sección"
-                  aria-label="Nombre de la sección"
+                  placeholder={t("common.section_placeholder")}
+                  aria-label={t("common.section_label")}
                   value={field.value}
                   {...props}
                 />
@@ -61,7 +63,7 @@ export function Ingredients(props: IngredientsProps) {
                           id={field.name}
                           class="textField"
                           type="text"
-                          placeholder="200 ml de..."
+                          placeholder={t("common.ingredient_placeholder")}
                           value={field.value}
                           {...props}
                         />
@@ -71,7 +73,7 @@ export function Ingredients(props: IngredientsProps) {
                     <button
                       type="button"
                       class={styles.action}
-                      title="Eliminar ingrediente"
+                      title={t("common.actions.delete_ingredient")}
                       onDblClick={() => removeIngredient(sectionIdx, ingredientIdx)}
                       disabled={store.submitting.value}
                     >
@@ -91,16 +93,15 @@ export function Ingredients(props: IngredientsProps) {
                 onClick={() => addIngredient(sectionIdx)}
                 disabled={store.submitting.value}
               >
-                Añadir ingrediente
+                {t("common.actions.add_ingredient")}
               </button>
               <button
                 type="button"
                 class="btn btn-danger"
-                title="Eliminar sección"
                 onDblClick={() => removeSection(sectionIdx)}
                 disabled={store.submitting.value}
               >
-                Eliminar sección
+                {t("common.actions.delete_section")}
               </button>
             </div>
           </div>
@@ -113,7 +114,7 @@ export function Ingredients(props: IngredientsProps) {
         onClick={addSection}
         disabled={store.submitting.value}
       >
-        Añadir sección
+        {t("common.actions.add_section")}
       </button>
     </div>
   );

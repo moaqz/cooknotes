@@ -5,6 +5,7 @@ import { useEffect } from "preact/hooks";
 import { RecipeForm } from "~/components/recipe-form";
 import { RECIPES_UPDATED_EVENT } from "~/constants";
 import { useRecipe } from "~/hooks/use-recipe";
+import { useTranslation } from "~/hooks/use-translation";
 import { getRecipePath, renameFile, writeJSONFile } from "~/lib/fs";
 import { toKebabCase } from "~/lib/strings";
 import { Recipe } from "~/types";
@@ -12,6 +13,7 @@ import { Recipe } from "~/types";
 export function EditRecipeView() {
   const { recipeState, isFetching } = useRecipe();
   const location = useLocation();
+  const t = useTranslation();
 
   useEffect(() => {
     if (!isFetching && !recipeState) {
@@ -26,8 +28,8 @@ export function EditRecipeView() {
   return (
     <RecipeForm
       primaryButtonText={{
-        default: "Actualizar",
-        loading: "Actualizando..."
+        loading: t("common.actions.edit_recipe.loading"),
+        default: t("common.actions.edit_recipe.default")
       }}
       data={recipeState.data}
       handleOnSubmit={async (data) => {
@@ -40,14 +42,14 @@ export function EditRecipeView() {
             await renameFile(oldFilePath, newFilePath);
             await emit(RECIPES_UPDATED_EVENT);
             toast.success({
-              title: "Nombre de receta actualizado",
-              description: "El nombre de la receta se ha actualizado correctamente.",
+              title: t("toasts.recipe_name_updated.title"),
+              description: t("toasts.recipe_name_updated.description"),
               duration: 8000,
             });
           } catch (e) {
             toast.error({
-              title: "Error al renombrar la receta",
-              description: "Hubo un problema al cambiar el nombre del archivo.",
+              title: t("toasts.recipe_name_not_updated.title"),
+              description: t("toasts.recipe_name_not_updated.description"),
               duration: 8000,
             });
             return;
@@ -65,16 +67,16 @@ export function EditRecipeView() {
 
           await emit(RECIPES_UPDATED_EVENT);
           toast.success({
-            title: "Receta actualizada",
-            description: "La receta se ha actualizado correctamente.",
+            title: t("toasts.recipe_updated.title"),
+            description: t("toasts.recipe_updated.description"),
             duration: 8000,
           });
 
           location.route(`/recipes/${toKebabCase(data.name)}`);
         } catch (_) {
           toast.error({
-            title: "Error al actualizar receta",
-            description: "Hubo un problema al guardar la receta.",
+            title: t("toasts.recipe_not_updated.title"),
+            description: t("toasts.recipe_not_updated.description"),
             duration: 8000,
           });
         }

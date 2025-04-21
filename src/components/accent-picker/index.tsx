@@ -1,14 +1,17 @@
-import { ACCENTS, ACCENT_LABELS } from "~/constants";
+import { ACCENTS } from "~/constants";
 import styles from "./accent-picker.module.css";
 import { useSetting } from "~/hooks/use-config";
 import { Accent } from "~/types";
+import { useTranslation } from "~/hooks/use-translation";
 
 export function AccentPicker() {
+  const t = useTranslation();
   const [activeAccent, setActiveAccent] = useSetting("accent");
+
   return (
     <div class={styles.accents}>
       {ACCENTS.map((accent) => {
-        const label = ACCENT_LABELS[accent];
+        const label = t(`settings.accent_color.options.${accent}`);
 
         return (
           <input

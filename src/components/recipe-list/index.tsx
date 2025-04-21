@@ -7,6 +7,7 @@ import { listRecipes } from "~/lib/fs";
 import { listen, UnlistenFn } from "@tauri-apps/api/event";
 import { RECIPES_UPDATED_EVENT } from "~/constants";
 import { useLocation } from "preact-iso";
+import { useTranslation } from "~/hooks/use-translation";
 
 export function RecipeList() {
   const [recipes, setRecipes] = useState<RecipeEntries>([]);
@@ -14,6 +15,7 @@ export function RecipeList() {
   const [isRefetching, setIsRefetching] = useState(false);
   const [query, setQuery] = useState("");
   const { path: currentPath } = useLocation();
+  const t = useTranslation();
 
   const fetchRecipes = async () => {
     setIsLoading(true);
@@ -49,11 +51,11 @@ export function RecipeList() {
 
   return (
     <div class={styles.container}>
-      <h3 class={styles.title}>Recetas</h3>
+      <h3 class={styles.title}>{t("common.recipes")}</h3>
 
       <input
         type="search"
-        placeholder="Buscar..."
+        placeholder={t("common.search.placeholder")}
         value={query}
         onInput={(e) => setQuery(e.currentTarget.value)}
       />
@@ -80,9 +82,7 @@ export function RecipeList() {
                     );
                   })
                 )
-              : <p class={styles.notFoundMessage}>
-                Aún no tienes recetas {query ? <>de <span>{query}</span></> : null} en tu colección.
-              </p>}
+              : <p class={styles.notFoundMessage}>{t("common.search.no_matches_found")}</p>}
           </ul>
           )}
     </div>

@@ -2,15 +2,12 @@ import styles from "./title-bar.module.css";
 
 import { useLocation } from "preact-iso";
 import { useHistory } from "~/hooks/use-history";
+import { useTranslation } from "~/hooks/use-translation";
 
 export function TitleBar() {
   const location = useLocation();
-  const {
-    canGoBackward,
-    canGoForward,
-    goBackward,
-    goForward
-  } = useHistory();
+  const t = useTranslation();
+  const { canGoBackward, canGoForward, goBackward, goForward } = useHistory();
 
   return (
     <header class={styles.titleBar}>
@@ -18,7 +15,7 @@ export function TitleBar() {
         <button
           type="button"
           class={styles.iconBtn}
-          title="Retroceder"
+          title={t("navigation.back.aria")}
           disabled={!canGoBackward}
           onClick={goBackward}
         >
@@ -30,7 +27,7 @@ export function TitleBar() {
         <button
           type="button"
           class={styles.iconBtn}
-          title="Avanzar"
+          title={t("navigation.forward.aria")}
           disabled={!canGoForward}
           onClick={goForward}
         >
@@ -42,8 +39,10 @@ export function TitleBar() {
 
       <div class={styles.actions}>
         <button
-          type="button" class={styles.iconBtn}
-          title="Crear receta" onClick={() => location.route("/new")}
+          type="button"
+          class={styles.iconBtn}
+          title={t("navigation.new_recipe.aria")}
+          onClick={() => location.route("/new")}
         >
           <svg width="20" height="20" aria-hidden="true">
             <use href="/title-bar.svg#square-pen" />

@@ -1,11 +1,13 @@
 import { createContext } from "preact";
 import { useEffect, useState, type PropsWithChildren } from "preact/compat";
 import { SETTINGS_KEY } from "~/constants";
+import { Language } from "~/locales";
 import type { Accent, Theme } from "~/types";
 
 export interface AppConfig {
   theme: Theme;
   accent: Accent;
+  language: Language;
 }
 
 export interface SettingsContextValue {
@@ -16,6 +18,7 @@ export interface SettingsContextValue {
 const DEFAULT_APP_CONFIG: AppConfig = {
   theme: "system",
   accent: "cyan",
+  language: "en",
 };
 
 export const AppConfigContext = createContext<SettingsContextValue | null>(null);

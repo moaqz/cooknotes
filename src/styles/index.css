@@ -268,3 +268,26 @@ input[type="radio"]::before {
 input[type="radio"]:checked::before {
   transform: scale(1);
 }
+
+select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  position: relative;
+}
+
+select {
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid var(--ui);
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    background-color: var(--bg-2);
+    color: var(--secondary-text);
+}

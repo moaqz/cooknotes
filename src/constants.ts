@@ -1,9 +1,5 @@
-import type { Theme, Accent } from "./types";
-
 export const DEFAULT_RECIPE_FORM_VALUES = {
-  steps: [
-    { description: "", images: [] },
-  ],
+  steps: [{ description: "", images: [] }],
   ingredients: [],
   name: "",
   main_image: "",
@@ -11,12 +7,6 @@ export const DEFAULT_RECIPE_FORM_VALUES = {
 };
 
 export const RECIPES_UPDATED_EVENT = "recipes-updated";
-
-export const THEME_LABELS: Record<Theme, string> = {
-  system: "Sistema",
-  light: "Claro",
-  dark: "Oscuro",
-};
 
 export const SETTINGS_KEY = "cooknotes.settings";
 
@@ -26,14 +16,5 @@ export const ACCENTS = [
   "purple",
   "yellow",
   "green",
-  "blue"
+  "blue",
 ] as const;
-
-export const ACCENT_LABELS: Record<Accent, string> = {
-  blue: "Azul",
-  cyan: "Cian",
-  green: "Verde",
-  purple: "Violeta",
-  red: "Rojo",
-  yellow: "Amarillo"
-};

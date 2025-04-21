@@ -5,6 +5,7 @@ import { FormStore, reset, getValue, setValue, Field } from "@modular-forms/prea
 
 import { copyImage, getLocalImage } from "~/lib/image";
 import { RecipeFormData } from "~/types";
+import { useTranslation } from "~/hooks/use-translation";
 
 interface ImageUploaderProps {
   of: FormStore<RecipeFormData>;
@@ -13,6 +14,7 @@ interface ImageUploaderProps {
 export function ImageUploader(props: ImageUploaderProps) {
   const { of: store } = props;
   const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const t = useTranslation();
 
   // Fetch local image if not null.
   useEffect(() => {
@@ -58,7 +60,7 @@ export function ImageUploader(props: ImageUploaderProps) {
             id="main_image"
             type="file"
             class={styles.fileInput}
-            aria-label="Upload an image"
+            aria-label={t("common.upload_image_label")}
             accept="image/*"
             onChange={onFileChange}
           />
@@ -77,7 +79,7 @@ export function ImageUploader(props: ImageUploaderProps) {
     <div class={styles.imagePreview}>
       <img
         src={imageSrc}
-        alt="Uploaded recipe image"
+        alt={t("common.uploaded_image_alt")}
       />
 
       <Field of={store} name="main_image">
@@ -89,7 +91,7 @@ export function ImageUploader(props: ImageUploaderProps) {
       <button
         type="button"
         onClick={onFileRemoval}
-        aria-label="Remove uploaded image"
+        aria-label={t("common.remove_uploaded_image")}
         disabled={store.submitting.value}
       >
         <svg width="20" height="20">

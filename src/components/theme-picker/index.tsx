@@ -1,9 +1,10 @@
 import type { Theme } from "~/types";
 import styles from "./theme-picker.module.css";
 import { useSetting } from "~/hooks/use-config";
-import { THEME_LABELS } from "~/constants";
+import { useTranslation } from "~/hooks/use-translation";
 
 export function ThemePicker() {
+  const t = useTranslation();
   const [activeTheme, setActiveTheme] = useSetting("theme");
 
   const handleChange = (e: Event) => {
@@ -22,7 +23,7 @@ export function ThemePicker() {
             checked={activeTheme === mode}
             onChange={handleChange}
           />
-          {THEME_LABELS[mode as Theme]}
+          {t(`settings.theme.options.${mode}`)}
         </label>
       ))}
     </div>

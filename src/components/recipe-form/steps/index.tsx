@@ -10,12 +10,14 @@ import {
   insert,
   getValues,
 } from "@modular-forms/preact";
+import { useTranslation } from "~/hooks/use-translation";
 
 interface StepsProps {
   of: FormStore<RecipeFormData>;
 }
 
 export function Steps(props: StepsProps) {
+  const t = useTranslation();
   const { of: store } = props;
 
   const canDeleteStep = () => (getValues(store).steps?.length ?? 0) > 1;
@@ -39,22 +41,18 @@ export function Steps(props: StepsProps) {
     <div class={styles.stepsContainer}>
       <ol class={styles.stepsList}>
         <FieldArray of={store} name="steps">
-          {(fieldArray) => (
+          {(fieldArray) =>
             fieldArray.items.value.map((item, idx) => (
               <li key={item} class={`${styles.step} numbered`}>
                 <Field of={store} name={`steps.${idx}.description`}>
                   {(field, props) => (
-                    <textarea
-                      class="textArea"
-                      value={field.value}
-                      {...props}
-                    />
+                    <textarea class="textArea" value={field.value} {...props} />
                   )}
                 </Field>
 
                 <button
                   type="button"
-                  title="Borrar paso"
+                  title={t("common.actions.delete_step")}
                   class={styles.action}
                   disabled={!canDeleteStep() || store.submitting.value}
                   onDblClick={() => removeStep(idx)}
@@ -65,7 +63,7 @@ export function Steps(props: StepsProps) {
                 </button>
               </li>
             ))
-          )}
+          }
         </FieldArray>
       </ol>
 
@@ -76,7 +74,7 @@ export function Steps(props: StepsProps) {
           onClick={addStep}
           disabled={store.submitting.value}
         >
-          Añadir un paso
+          {t("common.actions.add_step")}
         </button>
       </div>
     </div>

@@ -1,0 +1,126 @@
+{
+  "common": {
+    "recipes": "Recetas",
+    "ingredients": "Ingredientes",
+    "time": "Tiempo",
+    "steps": "Paso a Paso",
+    "section_placeholder": "Sección",
+    "section_label": "Nombre de la sección",
+    "ingredient_placeholder": "200 ml of...",
+    "recipe_title_label": "Título de la receta",
+    "upload_image_label": "Subir una imagen",
+    "uploaded_image_alt": "Imagen de receta subida",
+    "remove_uploaded_image": "Eliminar imagen subida",
+    "search": {
+      "placeholder": "Buscar...",
+      "no_matches_found": "No se encontraron resultados. "
+    },
+    "actions": {
+      "edit": "Editar",
+      "delete": "Borrar",
+      "delete_section": "Eliminar sección",
+      "add_ingredient": "Añadir ingrediente",
+      "delete_ingredient": "Borrar ingrediente",
+      "delete_step": "Borrar paso",
+      "add_step": "Añadir un paso",
+      "add_section": "Añadir sección",
+      "create_recipe": {
+        "default": "Crear receta",
+        "loading": "Guardando receta..."
+      },
+      "edit_recipe": {
+        "default": "Actualizar",
+        "loading": "Actualizando..."
+      }
+    }
+  },
+
+  "settings": {
+    "language": "Idioma",
+    "general": "General",
+    "general_description": "Configuración generales de la aplicación.",
+    "accent_color": {
+      "text": "Color de acentuación",
+      "options": {
+        "blue": "Azul",
+        "cyan": "Cian",
+        "green": "Verde",
+        "purple": "Violeta",
+        "red": "Rojo",
+        "yellow": "Amarillo"
+      }
+    },
+    "theme": {
+      "text": "Tema",
+      "options": {
+        "dark": "Oscuro",
+        "light": "Claro",
+        "system": "Predeterminado"
+      }
+    },
+    "appearance": "Apariencia",
+    "appearance_description": "Personaliza el estilo de la aplicación."
+  },
+
+  "navigation": {
+    "settings": "Configuración",
+    "back": {
+      "aria": "Volver a la página anterior"
+    },
+    "forward": {
+      "aria": "Avanzar a la siguiente página"
+    },
+    "new_recipe": {
+      "aria": "Crear receta"
+    }
+  },
+
+  "toasts": {
+    "recipe_removed": {
+      "title": "Receta eliminada",
+      "description": "La receta ha sido eliminada correctamente."
+    },
+    "recipe_removal_confirmation": {
+      "title": "Eliminar receta",
+      "description": "¿Estás seguro de que quieres eliminar esta receta? Esta acción no se puede deshacer.",
+      "confirm_text": "Eliminar",
+      "cancel_text": "Cancelar"
+    },
+    "recipe_not_removed": {
+      "title": "Error al eliminar",
+      "description": "Hubo un problema al eliminar la receta."
+    },
+    "recipe_created": {
+      "title": "Receta creada",
+      "description": "La receta ha sido guardada exitosamente."
+    },
+    "recipe_not_created": {
+      "title": "Error al crear la receta",
+      "description": "Hubo un problema al intentar crear la receta."
+    },
+    "recipe_name_taken": {
+      "title": "Nombre de receta en uso",
+      "description": "El nombre que intentas usar ya corresponde a una receta existente. Por favor, elige otro nombre."
+    },
+    "recipe_name_updated": {
+      "title": "Nombre de receta actualizado",
+      "description": "El nombre de la receta se ha actualizado correctamente."
+    },
+    "recipe_name_not_updated": {
+      "title": "Error al renombrar la receta",
+      "description": "Hubo un problema al cambiar el nombre del archivo."
+    },
+    "recipe_updated": {
+      "title": "Receta actualizada",
+      "description": "La receta se ha actualizado correctamente."
+    },
+    "recipe_not_updated": {
+      "title": "Error al actualizar receta",
+      "description": "Hubo un problema al guardar la receta."
+    }
+  },
+
+  "home": {
+    "welcome_message": "Selecciona una receta o usa estos enlaces:"
+  }
+}
