@@ -7,6 +7,7 @@
     "section_placeholder": "Sección",
     "section_label": "Nombre de la sección",
     "ingredient_placeholder": "200 ml of...",
+    "recipe_title_placeholder": "Título",
     "recipe_title_label": "Título de la receta",
     "upload_image_label": "Subir una imagen",
     "uploaded_image_alt": "Imagen de receta subida",

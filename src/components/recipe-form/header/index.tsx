@@ -47,7 +47,7 @@ export function FormHeader(props: FormHeaderProps) {
           <div class={styles.fieldGroup}>
             <input
               type="text"
-              placeholder="Título"
+              placeholder={t("common.recipe_title_placeholder")}
               class="textField"
               maxlength={60}
               minLength={3}

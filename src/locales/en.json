@@ -8,6 +8,7 @@
     "section_label": "Name of the section",
     "ingredient_placeholder": "200 ml of...",
     "recipe_title_label": "Recipe title",
+    "recipe_title_placeholder": "Title",
     "upload_image_label": "Upload an image",
     "uploaded_image_alt": "Uploaded recipe image",
     "remove_uploaded_image": "Remove uploaded image",
