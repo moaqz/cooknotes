@@ -1,10 +1,11 @@
 .container {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  overflow: hidden;
   gap: 0.5rem;
   max-height: 95dvh;
-  padding: 1.5rem 0.75rem;
+  padding: 0.75rem;
+  padding-block-start: 1.5rem;
 }
 
 .title {
@@ -15,6 +16,7 @@
 }
 
 .recipeList {
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 0.125rem;

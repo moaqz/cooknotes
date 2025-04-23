@@ -111,12 +111,13 @@ body {
 .menubar {
   background-color: var(--sidebar-bg);
   border-right: 1px solid var(--ui);
-  height: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
   width: var(--menubar-size);
 
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
 
   position: fixed;
   top: 0;
@@ -132,6 +133,7 @@ body {
 }
 
 input[type="search"] {
+  flex-shrink: 0;
   width: 100%;
   height: 2.5rem;
   padding-inline: 0.5rem;
