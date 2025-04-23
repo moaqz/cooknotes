@@ -16,25 +16,23 @@ Cooknotes is a local-first recipe management app.
 - **Free and open source**
 - **Easy to use and clean UI**
 - **Dark mode and Light mode**
+- **Multi-language support**
 
 ## 🆕 Planned Features
 
 - **Last open recipes**: Last recipes you opened for quick access
 - **Share your recipes with your friends**
 - **Keyboard shortcuts**
-- **Multi-language support**
 
 Contributions and suggestions are always welcome.
 
 ## 📸 Screenshots
 
-![Recipe view in light mode](./public/screnshoots/screenshot-es-01.webp)
+![View mode](./public/screnshoots/cooknotes-view-mode.webp)
 
-![Recipe view in light mode](./public/screnshoots/screenshot-es-04.webp)
+![Edit mode](./public/screnshoots/cooknotes-edit-mode.webp)
 
-![Edit recipe view](./public/screnshoots/screenshot-es-02.webp)
-
-![Create recipe view](./public/screnshoots/screenshot-es-03.webp)
+![Settings](./public/screnshoots/cooknotes-settings.webp)
 
 ## 🚀 Getting started
 
@@ -78,10 +76,6 @@ pnpm tauri dev
 
 | Platform | Version  | Download |
 | -------- | -------- | --------  |
-| Windows  | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases)  |
-| Linux    | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases)  |
-| MacOS    | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases)  |
-
-## Motivation
-
-I'm exploring the world of pastry and wanted a place to store all my recipes without needing to register or rely on paid services. This led me to build a desktop application based on the philosophy [file over app](https://stephango.com/file-over-app), and why not, try a new technology **(Tauri)**.
+| Windows  | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases/latest)  |
+| Linux    | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases/latest)  |
+| MacOS    | ![GitHub releases](https://img.shields.io/github/release/moaqz/cooknotes) | [Download](https://github.com/moaqz/cooknotes/releases/latest)  |
