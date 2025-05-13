@@ -2,8 +2,7 @@
 [Planned Features](#-planned-features) •
 [Screenshots](#-screenshots) •
 [Downloads](#-downloads) •
-[Getting Started](#-getting-started) •
-[Motivation](#motivation) 
+[Getting Started](#-getting-started)
 
 # Cooknotes
 
