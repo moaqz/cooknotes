@@ -241,6 +241,7 @@ moaqz-toaster {
   --toast-info: var(--accent-blue);
   --toast-confirm: var(--accent-purple);
 
+  --toast-actions-confirm-background-color: var(--accent-green);
   --toast-actions-cancel-background-color: var(--accent-red);
 }
 
