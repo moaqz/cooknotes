@@ -3,7 +3,7 @@ import styles from "./recipe.module.css";
 import { useLocation, useRoute } from "preact-iso";
 import { useEffect } from "preact/hooks";
 import { useRecipe } from "~/hooks/use-recipe";
-import { deleteFile, getRecipePath } from "~/lib/fs";
+import { fileSystemService, recipesService } from "~/services/index";
 import { emit } from "@tauri-apps/api/event";
 import { RECIPES_UPDATED_EVENT } from "~/constants";
 import { useTranslation } from "~/hooks/use-translation";
@@ -38,8 +38,8 @@ export function RecipeView() {
       cancelText: t("toasts.recipe_removal_confirmation.cancel_text"),
       onConfirm: async () => {
         try {
-          const filePath = getRecipePath(recipeState.data.name);
-          await deleteFile(filePath);
+          const filePath = recipesService.getRecipePath(recipeState.data.name);
+          await fileSystemService.deleteFile(filePath);
           toast.success({
             title: t("toasts.recipe_removed.title"),
             description: t("toasts.recipe_removed.description"),

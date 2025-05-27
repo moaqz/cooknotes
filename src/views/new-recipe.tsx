@@ -1,8 +1,8 @@
 import { RecipeForm } from "~/components/recipe-form";
 
-import { listRecipes, writeJSONFile } from "~/lib/fs";
 import { Recipe } from "~/types";
 import { toKebabCase } from "~/lib/strings";
+import { fileSystemService, recipesService } from "~/services/index";
 
 import { toast } from "@moaqzdev/toast";
 import { useLocation } from "preact-iso";
@@ -25,7 +25,7 @@ export function NewRecipeView() {
           },
         };
 
-        const recipeEntries = await listRecipes("recipes").catch(() => []);
+        const recipeEntries = await recipesService.list().catch(() => []);
         const fileExists = recipeEntries.find((entry) => {
           return entry.id === recipeIdentifier;
         });
@@ -40,7 +40,7 @@ export function NewRecipeView() {
         }
 
         try {
-          await writeJSONFile<Recipe>(
+          await fileSystemService.writeFile<Recipe>(
             `recipes/${recipeIdentifier}.json`,
             recipe
           );

@@ -3,11 +3,11 @@ import styles from "./recipe-list.module.css";
 import { useEffect, useState } from "preact/hooks";
 import { Spinner } from "~/components/spinner";
 import { RecipeEntries } from "~/types";
-import { listRecipes } from "~/lib/fs";
 import { listen, UnlistenFn } from "@tauri-apps/api/event";
 import { RECIPES_UPDATED_EVENT } from "~/constants";
 import { useLocation } from "preact-iso";
 import { useTranslation } from "~/hooks/use-translation";
+import { recipesService } from "~/services/index";
 
 export function RecipeList() {
   const [recipes, setRecipes] = useState<RecipeEntries>([]);
@@ -20,7 +20,7 @@ export function RecipeList() {
   const fetchRecipes = async () => {
     setIsLoading(true);
     setIsRefetching(true);
-    const data = await listRecipes("recipes").catch(() => []);
+    const data = await recipesService.list().catch(() => []);
     setRecipes(data);
     setIsLoading(false);
     setIsRefetching(false);

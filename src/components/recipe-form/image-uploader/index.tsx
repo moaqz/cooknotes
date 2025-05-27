@@ -3,7 +3,7 @@ import styles from "./image-uploader.module.css";
 import { TargetedEvent, useEffect, useState } from "preact/compat";
 import { FormStore, reset, getValue, setValue, Field } from "@modular-forms/preact";
 
-import { copyImage, getLocalImage } from "~/lib/image";
+import { imageService } from "~/services/index";
 import { RecipeFormData } from "~/types";
 import { useTranslation } from "~/hooks/use-translation";
 
@@ -23,7 +23,7 @@ export function ImageUploader(props: ImageUploaderProps) {
       return;
     }
 
-    getLocalImage(image).then((path) => {
+    imageService.getImageUrl(image).then((path) => {
       setImageSrc(path);
     });
   }, []);
@@ -36,9 +36,9 @@ export function ImageUploader(props: ImageUploaderProps) {
 
     try {
       const fileName = file.name;
-      await copyImage(fileName, file);
+      await imageService.saveImage(fileName, file);
       setValue(store, "main_image", fileName);
-      setImageSrc(await getLocalImage(fileName));
+      setImageSrc(await imageService.getImageUrl(fileName));
     } catch (_) {
       //
     }

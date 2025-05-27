@@ -1,8 +1,7 @@
 /* eslint-disable camelcase */
 import { useLocation, useRoute } from "preact-iso";
 import { useEffect, useState } from "preact/hooks";
-import { readJSONFile } from "~/lib/fs";
-import { getLocalImage } from "~/lib/image";
+import { fileSystemService, imageService } from "~/services/index";
 import { Recipe } from "~/types";
 
 interface UseRecipeOptions {
@@ -15,7 +14,7 @@ async function processMainImage(normalize: boolean, imagePath?: string) {
   }
 
   return imagePath
-    ? await getLocalImage(imagePath)
+    ? await imageService.getImageUrl(imagePath)
     : "/illustrations/food-placeholder.webp";
 }
 
@@ -30,7 +29,7 @@ export function useRecipe(props: UseRecipeOptions = {}) {
     const fetchRecipe = async () => {
       try {
         const path = `recipes/${id}.json`;
-        const recipe = await readJSONFile<Recipe>(path);
+        const recipe = await fileSystemService.readFile<Recipe>(path);
         const main_image = await processMainImage(
           normalizeImage,
           recipe.data.main_image

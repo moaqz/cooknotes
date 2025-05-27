@@ -6,7 +6,7 @@ import { RecipeForm } from "~/components/recipe-form";
 import { RECIPES_UPDATED_EVENT } from "~/constants";
 import { useRecipe } from "~/hooks/use-recipe";
 import { useTranslation } from "~/hooks/use-translation";
-import { getRecipePath, renameFile, writeJSONFile } from "~/lib/fs";
+import { fileSystemService, recipesService } from "~/services/index";
 import { toKebabCase } from "~/lib/strings";
 import { Recipe } from "~/types";
 
@@ -34,12 +34,12 @@ export function EditRecipeView() {
       data={recipeState.data}
       handleOnSubmit={async (data) => {
         const hasNameChanged = recipeState.data.name !== data.name;
-        const newFilePath = getRecipePath(data.name);
-        const oldFilePath = getRecipePath(recipeState.data.name);
+        const newFilePath = recipesService.getRecipePath(data.name);
+        const oldFilePath = recipesService.getRecipePath(recipeState.data.name);
 
         if (hasNameChanged) {
           try {
-            await renameFile(oldFilePath, newFilePath);
+            await fileSystemService.renameFile(oldFilePath, newFilePath);
             await emit(RECIPES_UPDATED_EVENT);
             toast.success({
               title: t("toasts.recipe_name_updated.title"),
@@ -57,7 +57,7 @@ export function EditRecipeView() {
         }
 
         try {
-          await writeJSONFile<Recipe>(newFilePath, {
+          await fileSystemService.writeFile<Recipe>(newFilePath, {
             data,
             metadata: {
               ...recipeState.metadata,

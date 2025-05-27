@@ -39,7 +39,7 @@
       "identifier": "fs:read-dirs",
       "allow": [
         {
-          "path": "$APPLOCALDATA/*"
+          "path": "$APPLOCALDATA/**"
         }
       ]
     },
