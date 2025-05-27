@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { useLocation, useRoute } from "preact-iso";
 import { useEffect, useState } from "preact/hooks";
-import { fileSystemService, imageService } from "~/services/index";
+import { fileSystemService, imageService, recipesService } from "~/services/index";
 import { Recipe } from "~/types";
 
 interface UseRecipeOptions {
@@ -28,7 +28,7 @@ export function useRecipe(props: UseRecipeOptions = {}) {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const path = `recipes/${id}.json`;
+        const path = recipesService.getRecipePath(id);
         const recipe = await fileSystemService.readFile<Recipe>(path);
         const main_image = await processMainImage(
           normalizeImage,
