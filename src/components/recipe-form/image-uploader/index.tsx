@@ -95,7 +95,7 @@ export function ImageUploader(props: ImageUploaderProps) {
         disabled={store.submitting.value}
       >
         <svg width="20" height="20">
-          <use href="/ui.svg#x" />
+          <use href="/sprite.svg#x" />
         </svg>
       </button>
     </div>

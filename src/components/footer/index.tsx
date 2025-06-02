@@ -12,7 +12,7 @@ export function Footer() {
         class={styles.btn}
       >
         <svg width="20" height="20" viewBox="0 0 24 24">
-          <use href="/ui.svg#settings" />
+          <use href="/sprite.svg#settings" />
         </svg>
         {t("navigation.settings")}
       </a>

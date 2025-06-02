@@ -20,7 +20,7 @@ export function TitleBar() {
           onClick={goBackward}
         >
           <svg width="20" height="20" aria-hidden="true">
-            <use href="/title-bar.svg#arrow-left" />
+            <use href="/sprite.svg#arrow-left" />
           </svg>
         </button>
 
@@ -32,7 +32,7 @@ export function TitleBar() {
           onClick={goForward}
         >
           <svg width="20" height="20" aria-hidden="true">
-            <use href="/title-bar.svg#arrow-right" />
+            <use href="/sprite.svg#arrow-right" />
           </svg>
         </button>
       </div>
@@ -45,7 +45,7 @@ export function TitleBar() {
           onClick={() => location.route("/new")}
         >
           <svg width="20" height="20" aria-hidden="true">
-            <use href="/title-bar.svg#square-pen" />
+            <use href="/sprite.svg#pencil" />
           </svg>
         </button>
       </div>

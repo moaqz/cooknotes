@@ -78,7 +78,7 @@ export function Ingredients(props: IngredientsProps) {
                       disabled={store.submitting.value}
                     >
                       <svg width="20" height="20" aria-hidden="true">
-                        <use href="/ui.svg#trash" />
+                        <use href="/sprite.svg#trash" />
                       </svg>
                     </button>
                   </li>

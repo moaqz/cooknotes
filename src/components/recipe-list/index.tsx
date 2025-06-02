@@ -74,7 +74,7 @@ export function RecipeList() {
                       <li key={item.id}>
                         <a href={recipePath} class={styles.recipeItem} data-selected={isActive}>
                           <svg width="14" height="14" viewBox="0 0 24 24">
-                            <use href="/ui.svg#hash" />
+                            <use href="/sprite.svg#hash" />
                           </svg>
                           {item.name}
                         </a>

@@ -128,14 +128,14 @@ export function RecipeView() {
       <footer class={styles.actions}>
         <a href={`/recipes/${id}/edit`} class="btn">
           <svg width="20" height="20" aria-hidden="true">
-            <use href="/recipe.svg#pencil" />
+            <use href="/sprite.svg#pencil" />
           </svg>
           {t("common.actions.edit")}
         </a>
 
         <button class="btn btn-danger" onClick={deleteRecipe}>
           <svg width="20" height="20" aria-hidden="true">
-            <use href="/recipe.svg#trash" />
+            <use href="/sprite.svg#trash" />
           </svg>
           {t("common.actions.delete")}
         </button>
