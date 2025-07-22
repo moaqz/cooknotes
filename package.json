@@ -21,15 +21,16 @@
     "@tauri-apps/plugin-opener": "^2",
     "change-case": "^5.4.4",
     "preact": "^10.26.5",
-    "preact-iso": "^2.9.1"
+    "preact-iso": "^2.9.1",
+    "valibot": "^1.1.0"
   },
   "devDependencies": {
-    "lefthook": "^1.11.10",
     "@preact/preset-vite": "^2.10.1",
     "@tauri-apps/cli": "^2",
     "@types/node": "^22.14.1",
     "eslint": "^9.24.0",
     "eslint-config-moaqz": "^0.3.0",
+    "lefthook": "^1.11.10",
     "typescript": "~5.7.2",
     "vite": "^6.3.1"
   }

@@ -1,8 +1,12 @@
 /* eslint-disable camelcase */
+import { toast } from "@moaqzdev/toast";
 import { useLocation, useRoute } from "preact-iso";
 import { useEffect, useState } from "preact/hooks";
+import { parseAsync, ValiError } from "valibot";
+import { RecipeScheme } from "~/lib/schemas";
 import { fileSystemService, imageService, recipesService } from "~/services/index";
 import { Recipe } from "~/types";
+import { useTranslation } from "./use-translation";
 
 interface UseRecipeOptions {
   normalizeImage?: boolean;
@@ -22,6 +26,7 @@ export function useRecipe(props: UseRecipeOptions = {}) {
   const { normalizeImage = false } = props;
   const { route } = useLocation();
   const { id } = useRoute().params;
+  const t = useTranslation();
   const [recipeState, setRecipeState] = useState<Recipe | null>(null);
   const [isFetching, setIsFetching] = useState(true);
 
@@ -35,6 +40,7 @@ export function useRecipe(props: UseRecipeOptions = {}) {
           recipe.data.main_image
         );
 
+        await parseAsync(RecipeScheme, recipe);
         setRecipeState({
           data: {
             ...recipe.data,
@@ -46,6 +52,13 @@ export function useRecipe(props: UseRecipeOptions = {}) {
         });
         setIsFetching(false);
       } catch (e) {
+        if (e instanceof ValiError) {
+          toast.error({
+            title: t("toasts.recipe_unexpected_format.title"),
+            description: t("toasts.recipe_unexpected_format.description"),
+            duration: 8000,
+          });
+        }
         setIsFetching(false);
         route("/not-found");
       }

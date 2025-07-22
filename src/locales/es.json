@@ -35,7 +35,6 @@
       }
     }
   },
-
   "settings": {
     "language": "Idioma",
     "general": "General",
@@ -62,7 +61,6 @@
     "appearance": "Apariencia",
     "appearance_description": "Personaliza el estilo de la aplicación."
   },
-
   "navigation": {
     "settings": "Configuración",
     "back": {
@@ -75,7 +73,6 @@
       "aria": "Crear receta"
     }
   },
-
   "toasts": {
     "recipe_removed": {
       "title": "Receta eliminada",
@@ -118,9 +115,12 @@
     "recipe_not_updated": {
       "title": "Error al actualizar receta",
       "description": "Hubo un problema al guardar la receta."
+    },
+    "recipe_unexpected_format": {
+      "title": "Error al cargar la receta",
+      "description": "El archivo de la receta no cumple con el formato esperado."
     }
   },
-
   "home": {
     "welcome_message": "Selecciona una receta o usa estos enlaces:"
   }

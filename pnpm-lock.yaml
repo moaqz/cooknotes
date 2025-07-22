@@ -35,6 +35,9 @@ importers:
       preact-iso:
         specifier: ^2.9.1
         version: 2.9.1(preact-render-to-string@6.5.13(preact@10.26.5))(preact@10.26.5)
+      valibot:
+        specifier: ^1.1.0
+        version: 1.1.0(typescript@5.7.3)
     devDependencies:
       '@preact/preset-vite':
         specifier: ^2.10.1
@@ -1946,8 +1949,8 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
-  valibot@1.0.0-rc.3:
-    resolution: {integrity: sha512-LT0REa7Iqx4QGcaHLiTiTkcmJqJ9QdpOy89HALFFBJgejTS64GQFRIbDF7e4f6pauQbo/myfKGmWXCLhMeM6+g==}
+  valibot@1.1.0:
+    resolution: {integrity: sha512-Nk8lX30Qhu+9txPYTwM0cFlWLdPFsFr6LblzqIySfbZph9+BFsAHsNvHOymEviUepeIW6KFHzpX8TKhbptBXXw==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -2339,7 +2342,7 @@ snapshots:
     dependencies:
       '@preact/signals': 2.0.3(preact@10.26.5)
       preact: 10.26.5
-      valibot: 1.0.0-rc.3(typescript@5.7.3)
+      valibot: 1.1.0(typescript@5.7.3)
     transitivePeerDependencies:
       - typescript
 
@@ -4137,7 +4140,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  valibot@1.0.0-rc.3(typescript@5.7.3):
+  valibot@1.1.0(typescript@5.7.3):
     optionalDependencies:
       typescript: 5.7.3
 

@@ -35,7 +35,6 @@
       }
     }
   },
-
   "settings": {
     "language": "Language",
     "general": "General",
@@ -62,7 +61,6 @@
     "appearance": "Appearance",
     "appearance_description": "Customize the style of the application."
   },
-
   "navigation": {
     "settings": "Settings",
     "back": {
@@ -75,7 +73,6 @@
       "aria": "Create recipe"
     }
   },
-
   "toasts": {
     "recipe_removed": {
       "title": "Recipe deleted",
@@ -118,9 +115,12 @@
     "recipe_not_updated": {
       "title": "Error updating recipe",
       "description": "There was a problem saving the recipe."
+    },
+    "recipe_unexpected_format": {
+      "title": "Error Loading Recipe",
+      "description": "The recipe file does not follow the expected format."
     }
   },
-
   "home": {
     "welcome_message": "Select a recipe or use these links:"
   }
