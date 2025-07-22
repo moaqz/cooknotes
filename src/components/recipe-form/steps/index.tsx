@@ -20,7 +20,7 @@ export function Steps(props: StepsProps) {
   const t = useTranslation();
   const { of: store } = props;
 
-  const canDeleteStep = () => (getValues(store).steps?.length ?? 0) > 1;
+  const canDeleteStep = () => (getValues(store).steps?.length ?? 0) >= 1;
 
   function removeStep(idx: number) {
     if (canDeleteStep()) {

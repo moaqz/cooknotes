@@ -69,26 +69,28 @@ export function RecipeView() {
             alt={recipeState.data.name}
           />
 
-          <div class={styles.contentGroup}>
-            <h2>{t("common.ingredients")}</h2>
+          {recipeState.data.ingredients
+            ? <div class={styles.contentGroup}>
+              <h2>{t("common.ingredients")}</h2>
 
-            {recipeState.data.ingredients?.map((section, idx) => (
-              <div
-                key={section.section_name || idx}
-                class={styles.ingredientsGroup}
-              >
-                {section.section_name ? <h3>{section.section_name}</h3> : null}
+              {recipeState.data.ingredients.map((section, idx) => (
+                <div
+                  key={section.section_name || idx}
+                  class={styles.ingredientsGroup}
+                >
+                  {section.section_name ? <h3>{section.section_name}</h3> : null}
 
-                <ul>
-                  {section.ingredients?.map((item, idx) => (
-                    <li key={idx} class={styles.ingredient}>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+                  <ul>
+                    {section.ingredients?.map((item, idx) => (
+                      <li key={idx} class={styles.ingredient}>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            : null}
         </div>
 
         <div class={styles.rightSection}>
@@ -105,23 +107,24 @@ export function RecipeView() {
                   <>
                     <span role="separator">·</span>
                     <p>{recipeState.data.cooking_time} minutos</p>
-                  </>
-                  )
+                  </>)
                 : null}
             </div>
           </div>
 
-          <div class={styles.contentGroup}>
-            <h2>{t("common.steps")}</h2>
+          {recipeState.data.steps
+            ? <div class={styles.contentGroup}>
+              <h2>{t("common.steps")}</h2>
 
-            <ol class={styles.stepsList}>
-              {recipeState.data.steps?.map((item, idx) => (
-                <li key={idx} class={`${styles.step} numbered`}>
-                  {item.description}
-                </li>
-              ))}
-            </ol>
-          </div>
+              <ol class={styles.stepsList}>
+                {recipeState.data.steps.map((item, idx) => (
+                  <li key={idx} class={`${styles.step} numbered`}>
+                    {item.description}
+                  </li>
+                ))}
+              </ol>
+            </div>
+            : null}
         </div>
       </section>
 
