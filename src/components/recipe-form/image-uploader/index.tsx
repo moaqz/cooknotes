@@ -54,7 +54,7 @@ export function ImageUploader(props: ImageUploaderProps) {
       <>
         <label class={styles.imageUploader}>
           <svg width="144" height="144">
-            <use href="/ui.svg#image" />
+            <use href="/sprite.svg#image" />
           </svg>
           <input
             id="main_image"
