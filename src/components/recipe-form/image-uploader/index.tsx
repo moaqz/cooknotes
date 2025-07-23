@@ -54,7 +54,7 @@ export function ImageUploader(props: ImageUploaderProps) {
       <>
         <label class={styles.imageUploader}>
           <svg width="144" height="144">
-            <use href="/sprite.svg#image" />
+            <use href="/ui.svg#image" />
           </svg>
           <input
             id="main_image"
@@ -95,7 +95,7 @@ export function ImageUploader(props: ImageUploaderProps) {
         disabled={store.submitting.value}
       >
         <svg width="20" height="20">
-          <use href="/sprite.svg#x" />
+          <use href="/ui.svg#x" />
         </svg>
       </button>
     </div>

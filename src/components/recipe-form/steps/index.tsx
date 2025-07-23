@@ -58,7 +58,7 @@ export function Steps(props: StepsProps) {
                   onDblClick={() => removeStep(idx)}
                 >
                   <svg width="20" height="20">
-                    <use href="/sprite.svg#trash" />
+                    <use href="/ui.svg#trash" />
                   </svg>
                 </button>
               </li>
