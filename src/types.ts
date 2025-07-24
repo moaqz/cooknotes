@@ -1,4 +1,4 @@
-import { ToasterAttributes } from "@moaqzdev/toast";
+import { ToasterAttributes } from "@moaqzdev/toast/utils";
 import { ACCENTS } from "./constants";
 
 declare global {

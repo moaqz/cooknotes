@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { toast } from "@moaqzdev/toast";
+import { toast } from "@moaqzdev/toast/utils";
 import { useLocation, useRoute } from "preact-iso";
 import { useEffect, useState } from "preact/hooks";
 import { parseAsync, ValiError } from "valibot";

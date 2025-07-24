@@ -1,4 +1,4 @@
-import { toast } from "@moaqzdev/toast";
+import { toast } from "@moaqzdev/toast/utils";
 import { emit } from "@tauri-apps/api/event";
 import { useLocation } from "preact-iso";
 import { useEffect } from "preact/hooks";

@@ -1,4 +1,4 @@
-import { toast } from "@moaqzdev/toast";
+import { toast } from "@moaqzdev/toast/utils";
 import styles from "./recipe.module.css";
 import { useLocation, useRoute } from "preact-iso";
 import { useEffect } from "preact/hooks";

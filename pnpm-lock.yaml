@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@moaqzdev/toast':
-        specifier: ^0.3.0
-        version: 0.3.0
+        specifier: ^1.3.0
+        version: 1.3.0
       '@modular-forms/preact':
         specifier: ^0.12.1
         version: 0.12.1(@preact/signals@2.0.3(preact@10.26.5))(preact@10.26.5)(typescript@5.7.3)
@@ -424,8 +424,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@moaqzdev/toast@0.3.0':
-    resolution: {integrity: sha512-c5txIDHiK1je3HPNNyRuApEeK0Eoca0BtNAT8dySDA+dfw2gY/gj7m477eg8FqFU8wKkT1BEjsW8NhsN0B+pcw==}
+  '@moaqzdev/toast@1.3.0':
+    resolution: {integrity: sha512-4llePbil0BrCSj8j6VqdorD4HeNRxNGvXbYCw8TJETZfwcPVn8ZiJM8886mJ0QQoqqSg8bZ4Vxt/3j6Zpt68kg==}
 
   '@modular-forms/preact@0.12.1':
     resolution: {integrity: sha512-e+3T0y890sAZ6vXJBSenthpLPddk9dXarooSL0WaffF/1nCvT48v5ugtrHqMwalY62djzV9kXXI6gWpKw5Un0w==}
@@ -2806,7 +2806,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@moaqzdev/toast@0.3.0': {}
+  '@moaqzdev/toast@1.3.0': {}
 
   '@modular-forms/preact@0.12.1(@preact/signals@2.0.3(preact@10.26.5))(preact@10.26.5)(typescript@5.7.3)':
     dependencies:

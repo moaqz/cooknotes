@@ -4,7 +4,7 @@ import { Recipe } from "~/types";
 import { toKebabCase } from "~/lib/strings";
 import { fileSystemService, recipesService } from "~/services/index";
 
-import { toast } from "@moaqzdev/toast";
+import { toast } from "@moaqzdev/toast/utils";
 import { useLocation } from "preact-iso";
 import { RECIPES_UPDATED_EVENT } from "~/constants";
 import { emit } from "@tauri-apps/api/event";
