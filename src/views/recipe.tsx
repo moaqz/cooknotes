@@ -128,11 +128,17 @@ export function RecipeView() {
                   {section.section_name ? <h3>{section.section_name}</h3> : null}
 
                   <ul>
-                    {section.ingredients?.map((item, idx) => (
-                      <li key={idx} class={styles.ingredient}>
-                        {item}
-                      </li>
-                    ))}
+                    {section.ingredients?.map((item, idx) => {
+                      if (item.trim() === "") {
+                        return null;
+                      }
+
+                      return (
+                        <li key={idx} class={styles.ingredient}>
+                          {item}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ))}
@@ -164,11 +170,17 @@ export function RecipeView() {
               <h2>{t("common.steps")}</h2>
 
               <ol class={styles.stepsList}>
-                {recipeState.data.steps.map((item, idx) => (
-                  <li key={idx} class={`${styles.step} numbered`}>
-                    {item.description}
-                  </li>
-                ))}
+                {recipeState.data.steps.map((item, idx) => {
+                  if (item.description.trim() === "") {
+                    return null;
+                  }
+
+                  return (
+                    <li key={idx} class={`${styles.step} numbered`}>
+                      {item.description}
+                    </li>
+                  );
+                })}
               </ol>
             </div>
             : null}
