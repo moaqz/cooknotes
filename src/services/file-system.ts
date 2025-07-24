@@ -1,5 +1,5 @@
 import { convertFileSrc } from "@tauri-apps/api/core";
-import { dirname, join, appLocalDataDir } from "@tauri-apps/api/path";
+import { dirname, join, appLocalDataDir, downloadDir } from "@tauri-apps/api/path";
 import {
   BaseDirectory,
   readTextFile,
@@ -38,6 +38,7 @@ export interface FileSystemService {
   deleteFile(path: string): Promise<void>
   localFilePath(path: string): Promise<string>
   getPublicUrl(path: string): Promise<string>
+  getDownloadDirectory(): Promise<string>
 }
 
 export class TauriFileSystemService implements FileSystemService {
@@ -137,5 +138,9 @@ export class TauriFileSystemService implements FileSystemService {
   public async getPublicUrl(path: string): Promise<string> {
     const absolutePath = await this.localFilePath(path);
     return convertFileSrc(absolutePath);
+  }
+
+  public getDownloadDirectory(): Promise<string> {
+    return downloadDir();
   }
 }

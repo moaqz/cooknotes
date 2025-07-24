@@ -1,0 +1,217 @@
+import { Recipe } from "~/types";
+import { jsPDF } from "jspdf";
+
+const DEFAULT_TEMPLATE = {
+  background: "#fffcf0",
+  page: {
+    margin: 20
+  },
+  h1: {
+    size: 24,
+    color: "#100f0f",
+    spacing: 22
+  },
+  h2: {
+    size: 18,
+    color: "#100f0f",
+    spacing: 16
+  },
+  h3: {
+    size: 14,
+    color: "#100f0f",
+    spacing: 12
+  },
+  p: {
+    size: 12,
+    color: "#6f6e69",
+    spacing: 10
+  },
+  list: {
+    spacing: 8,
+    size: 12,
+    color: "#6f6e69"
+  },
+  footer: {
+    color: "#B7B5AC",
+    size: 10,
+  },
+  spacing: {
+    betweenSections: 12,
+  }
+};
+
+export type PDFBuilderOpts = {
+  appName: string;
+  sections: {
+    ingredients: string;
+    steps: string;
+  },
+  template?: typeof DEFAULT_TEMPLATE;
+};
+
+export class PDFBuilder {
+  private readonly pdfFile: jsPDF;
+  private readonly template;
+  private readonly opts: PDFBuilderOpts;
+  private verticalCursor = 0;
+
+  constructor(opts: PDFBuilderOpts) {
+    // eslint-disable-next-line new-cap
+    this.pdfFile = new jsPDF();
+
+    this.template = opts.template ?? DEFAULT_TEMPLATE;
+    this.verticalCursor = this.template.page.margin;
+    this.opts = opts;
+    this.drawPageBackground();
+    this.addPageFooter();
+  }
+
+  public generate(recipe: Recipe) {
+    const { data } = recipe;
+
+    this.renderHeading(data.name, "h1");
+
+    if (data.ingredients) {
+      this.renderHeading(this.opts.sections.ingredients, "h2");
+
+      for (const section of data.ingredients) {
+        if (section.section_name) {
+          this.renderHeading(section.section_name, "h3");
+        }
+
+        const listPadding = this.calculateListPadding(data.ingredients.length, "unordered");
+        section.ingredients.forEach((ingredient) => {
+          if (ingredient.trim().length === 0) {
+            return;
+          }
+
+          this.renderListItem(ingredient, "•", listPadding);
+        });
+
+        this.verticalCursor += this.template.spacing.betweenSections;
+      }
+    }
+
+    if (data.steps) {
+      this.renderHeading(this.opts.sections.steps, "h2");
+
+      const listPadding = this.calculateListPadding(data.steps.length, "ordered");
+      data.steps.forEach((step, idx) => {
+        if (step.description.trim().length === 0) {
+          return;
+        }
+
+        this.renderListItem(
+          step.description,
+          `${idx === 0 ? 1 : idx + 1}.`,
+          listPadding
+        );
+      });
+
+      this.verticalCursor += this.template.spacing.betweenSections;
+    }
+  }
+
+  public async saveAs(filePath: string) {
+    this.pdfFile.save(filePath);
+  }
+
+  private renderListItem(text: string, symbol: string, padding: number) {
+    this.pdfFile.setFontSize(this.template.p.size);
+    this.pdfFile.setTextColor(this.template.p.color);
+
+    const documentWidth = this.calculateDocumentWidth();
+    const availableWidth = documentWidth - padding;
+
+    const lines = this.pdfFile.splitTextToSize(text, availableWidth);
+    const totalHeight = lines.length * this.template.list.spacing;
+
+    this.addPageIfNeeded(totalHeight);
+
+    this.pdfFile.text(symbol, this.template.page.margin, this.verticalCursor);
+
+    const textX = this.template.page.margin + padding;
+    lines.forEach((line: string) => {
+      this.pdfFile.text(line, textX, this.verticalCursor);
+      this.verticalCursor += this.template.list.spacing;
+    });
+  }
+
+  private calculateListPadding(itemCount: number, type: "ordered" | "unordered"): number {
+    const spacing = 4;
+
+    if (type === "unordered") {
+      return this.pdfFile.getTextWidth("•") + spacing;
+    }
+
+    const maxNumber = `${itemCount}.`;
+    return this.pdfFile.getTextWidth(maxNumber) + spacing;
+  }
+
+  private renderHeading(text: string, level: "h1" | "h2" | "h3") {
+    const headerStyle = this.template[level];
+    const requiredHeight = headerStyle.size + headerStyle.spacing;
+    this.addPageIfNeeded(requiredHeight);
+
+    this.pdfFile.setFontSize(headerStyle.size);
+    this.pdfFile.setTextColor(headerStyle.color);
+    this.pdfFile.text(text, this.template.page.margin, this.verticalCursor);
+    this.verticalCursor += headerStyle.spacing;
+  }
+
+  private addPageIfNeeded(requiredHeight: number) {
+    const {
+      getHeight: getDocHeight,
+    } = this.pdfFile.internal.pageSize;
+
+    if (this.verticalCursor + requiredHeight > getDocHeight() - this.template.page.margin) {
+      this.pdfFile.addPage();
+      this.drawPageBackground();
+      this.addPageFooter();
+      this.verticalCursor = this.template.page.margin;
+    }
+  }
+
+  private calculateDocumentWidth() {
+    const {
+      getWidth: getDocWidth,
+    } = this.pdfFile.internal.pageSize;
+
+    return getDocWidth() - (this.template.page.margin * 2);
+  }
+
+  private drawPageBackground() {
+    const {
+      getHeight,
+      getWidth,
+    } = this.pdfFile.internal.pageSize;
+
+    this.pdfFile.setFillColor(this.template.background);
+    this.pdfFile.rect(0, 0, getWidth(), getHeight(), "F");
+  }
+
+  private addPageFooter() {
+    const {
+      getHeight,
+    } = this.pdfFile.internal.pageSize;
+
+    const message = `Generated by ${this.opts.appName}`;
+    const currentDate = new Date().toLocaleDateString();
+
+    const originalFontSize = this.pdfFile.getFontSize();
+    const originalTextColor = this.pdfFile.getTextColor();
+
+    this.pdfFile.setFontSize(this.template.footer.size);
+    this.pdfFile.setTextColor(this.template.footer.color);
+    this.pdfFile.text(
+      `${message} - ${currentDate}`,
+      this.template.page.margin,
+      getHeight() - (this.template.page.margin / 2)
+    );
+
+    // FIXME: Manually restore text styling because jsPDF maintains global state.
+    // If not restored, the first paragraph of each page will have the same font as the footer.
+    this.pdfFile.setFontSize(originalFontSize);
+    this.pdfFile.setTextColor(originalTextColor);
+  }
+}

@@ -50,6 +50,7 @@
           "path": "$APPLOCALDATA/*"
         }
       ]
-    }
+    },
+    "dialog:default"
   ]
 }

@@ -17,9 +17,11 @@
     "@modular-forms/preact": "^0.12.1",
     "@preact/signals": "^2.0.3",
     "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-dialog": "~2.3.1",
     "@tauri-apps/plugin-fs": "^2.2.1",
     "@tauri-apps/plugin-opener": "^2",
     "change-case": "^5.4.4",
+    "jspdf": "^3.0.1",
     "preact": "^10.26.5",
     "preact-iso": "^2.9.1",
     "valibot": "^1.1.0"

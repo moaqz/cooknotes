@@ -32,7 +32,8 @@
       "edit_recipe": {
         "default": "Update",
         "loading": "Updating..."
-      }
+      },
+      "export_recipe": "Export"
     }
   },
   "settings": {
@@ -119,6 +120,14 @@
     "recipe_unexpected_format": {
       "title": "Error Loading Recipe",
       "description": "The recipe file does not follow the expected format."
+    },
+    "pdf_generated": {
+      "title": "PDF generated",
+      "description": "The recipe has been saved successfully."
+    },
+    "pdf_generation_failed": {
+      "title": "Error generating PDF",
+      "description": "Could not create the PDF file. Please try again."
     }
   },
   "home": {

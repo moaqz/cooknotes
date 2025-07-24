@@ -4,10 +4,13 @@ import { useLocation, useRoute } from "preact-iso";
 import { useEffect } from "preact/hooks";
 import { useRecipe } from "~/hooks/use-recipe";
 import { fileSystemService, recipesService } from "~/services/index";
-import { emit } from "@tauri-apps/api/event";
 import { RECIPES_UPDATED_EVENT } from "~/constants";
 import { useTranslation } from "~/hooks/use-translation";
 import { useSetting } from "~/hooks/use-config";
+
+import { emit } from "@tauri-apps/api/event";
+import { save } from "@tauri-apps/plugin-dialog";
+import { app } from "@tauri-apps/api";
 
 export function RecipeView() {
   const { recipeState, isFetching } = useRecipe({ normalizeImage: true });
@@ -57,6 +60,50 @@ export function RecipeView() {
       },
       duration: "none",
     });
+  };
+
+  const downloadRecipeAsPDF = async () => {
+    const opts = {
+      appName: await app.getName(),
+      sections: {
+        ingredients: t("common.ingredients"),
+        steps: t("common.steps")
+      }
+    };
+
+    try {
+      const { PDFBuilder } = await import("~/services/pdf-builder");
+      const pdfBuilder = new PDFBuilder(opts);
+
+      const downloadDir = await fileSystemService.getDownloadDirectory();
+      const filePath = await save({
+        filters: [{
+          extensions: ["pdf"],
+          name: "PDF",
+        }],
+        defaultPath: `${downloadDir}/${recipeState.data.name}.pdf`,
+      });
+
+      if (!filePath) {
+        // no file selected.
+        return;
+      }
+
+      pdfBuilder.generate(recipeState);
+      await pdfBuilder.saveAs(filePath);
+
+      toast.success({
+        title: t("toasts.pdf_generated.title"),
+        description: t("toasts.pdf_generated.description"),
+        duration: 8000,
+      });
+    } catch (_) {
+      toast.error({
+        title: t("toasts.pdf_generation_failed.title"),
+        description: t("toasts.pdf_generation_failed.description"),
+        duration: 8000,
+      });
+    }
   };
 
   return (
@@ -135,6 +182,13 @@ export function RecipeView() {
           </svg>
           {t("common.actions.edit")}
         </a>
+
+        <button class="btn" onClick={downloadRecipeAsPDF}>
+          <svg width="20" height="20" aria-hidden="true">
+            <use href="/ui.svg#export" />
+          </svg>
+          {t("common.actions.export_recipe")}
+        </button>
 
         <button class="btn btn-danger" onClick={deleteRecipe}>
           <svg width="20" height="20" aria-hidden="true">
