@@ -6,7 +6,7 @@
 
 # Cooknotes
 
-Cooknotes is a local-first recipe management app.
+Cooknotes is a local-only recipe management app.
 
 ## ⭐ Features
 
@@ -16,12 +16,13 @@ Cooknotes is a local-first recipe management app.
 - **Easy to use and clean UI**
 - **Dark mode and Light mode**
 - **Multi-language support**
+- **Share your recipes as PDF**
 
 ## 🆕 Planned Features
 
 - **Last open recipes**: Last recipes you opened for quick access
-- **Share your recipes with your friends**
 - **Keyboard shortcuts**
+- **Import and export recipes in a single `.zip` or `.tar` file**
 
 Contributions and suggestions are always welcome.
 
